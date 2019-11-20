@@ -84,15 +84,14 @@ class Login extends React.Component {
           {
             localStorage.setItem("usr_token", res.data)
             var user = JwtPayload().usuario   
-
+            
             var colaborador = {
                 nombreColaborador : user.EmpleadoNombre,
                 colaboradorId : user.Empleado
             }
-            
             this.props.dispatch({type:'ACTUALIZAR_COLABORADOR', data: colaborador}) 
-            // window.location.href = "/tablero";
             window.location.reload();
+
           }
         }).catch((error) => 
         {
@@ -100,7 +99,7 @@ class Login extends React.Component {
           this.setState(state => ({Cargando: false }));
           Swal.fire({  
             title: error.response ? error.response.data : "Error",  
-            type: 'error',  
+            icon: 'error',  
             text: "Error",  
         });
         })
@@ -115,7 +114,7 @@ class Login extends React.Component {
           this.txtUsuario.focus();
           Swal.fire({  
               title: 'Ingresa el código de empleado',  
-              type: 'warning',  
+              icon: 'warning',  
               text: "Atención",  
           });
           return false
@@ -126,7 +125,7 @@ class Login extends React.Component {
           this.txtPassword.focus();
           Swal.fire({  
               title: 'Ingresa la contraseña',  
-              type: 'warning',  
+              icon: 'warning',  
               text: "Atención",  
           });
           return false

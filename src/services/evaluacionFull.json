@@ -1,0 +1,112 @@
+[{
+
+    "titulo": "Evaluacion anual",
+    "id": 12,
+    "secciones": [{
+            "idSeccion": 13,
+            "NombreSeccion": "Seccion 1",
+            "preguntas": [{
+                    "idPregunta": 37,
+                    "tituloPregunta": "Pregunta 1",
+                    "estado": 10,
+                    "tipoPregunta": 1,
+                    "opcionesRespuesta": [{
+                            "id": 85,
+                            "descripcion": "50%",
+                            "valor": 50
+                        },
+                        {
+                            "id": 86,
+                            "descripcion": "75%",
+                            "valor": 75
+                        }
+                    ]
+
+                },
+                {
+                    "idPregunta": 15489,
+                    "tituloPregunta": "Pregunta 12",
+                    "estado": 10,
+                    "tipoPregunta": 1,
+                    "opcionesRespuesta": [{
+                            "id": 87,
+                            "descripcion": "25%",
+                            "valor": 25
+                        },
+                        {
+                            "id": 88,
+                            "descripcion": "100%",
+                            "valor": 100
+                        }
+                    ]
+
+                },
+                {
+                    "idPregunta": 15481,
+                    "tituloPregunta": "Pregunta 2",
+                    "estado": 10,
+                    "tipoPregunta": 2,
+                    "opcionesRespuesta": [{
+                            "id": 3,
+                            "descripcion": "descripcion",
+                            "valor": 25
+                        },
+                        {
+                            "id": 6,
+                            "descripcion": "descripcion 2",
+                            "valor": 75
+                        },
+                        {
+                            "id": 9,
+                            "descripcion": "descripcion 3",
+                            "valor": 75
+                        }
+                    ]
+
+                },
+                {
+                    "idPregunta": 15491,
+                    "tituloPregunta": "Titulo",
+                    "estado": 10,
+                    "tipoPregunta": 3,
+                    "opcionesRespuesta": [{
+                        "id": 87,
+                        "descripcion": "descripcion",
+                        "valor": 75
+                    }]
+
+                },
+                {
+                    "idPregunta": 15471,
+                    "tituloPregunta": "Titulo 2",
+                    "estado": 10,
+                    "tipoPregunta": 3,
+                    "opcionesRespuesta": [{
+                        "id": 87,
+                        "descripcion": "descripcion",
+                        "valor": 75
+                    }]
+
+                }
+            ]
+        },
+        {
+            "idSeccion": 13,
+            "NombreSeccion": "Seccion 2",
+            "preguntas": [{
+                "idPregunta": 15451,
+                "tituloPregunta": "Pregunta 4",
+                "estado": 10,
+                "tipoPregunta": 2,
+                "opcionesRespuesta": [{
+                    "id": 87,
+                    "descripcion": "descripcion",
+                    "valor": 75
+                }]
+
+            }]
+        }
+    ]
+
+
+}]

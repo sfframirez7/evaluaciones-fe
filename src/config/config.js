@@ -1,6 +1,10 @@
 import axios from 'axios';
-// import { Service } from 'axios-middleware';
+import { Service } from 'axios-middleware';
 
+import { createStore } from 'redux';
+import Reducer from '../reducer/Reducer'
+
+export const store = createStore(Reducer);
 
 /* PRUEBAS */
 //const UrlBase = "http://10.100.203.46:8087"
@@ -17,20 +21,20 @@ axios.defaults.baseURL = UrlBase
 axios.defaults.headers.common['Authorization'] = `Bearer ${Token()}`
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-// const service = new Service(axios);
+const service = new Service(axios);
 
-// service.register({
-//     onRequest(config) {
-//         Token()
-//         return config;
-//     },
-//     onSync(promise) {
-//         return promise;
-//     },
-//     onResponse(response) {
-//         return response;
-//     }
-// });
+service.register({
+    onRequest(config) {
+        Token()
+        return config;
+    },
+    onSync(promise) {
+        return promise;
+    },
+    onResponse(response) {
+        return response;
+    }
+});
 
 
 function JwtPayload() {

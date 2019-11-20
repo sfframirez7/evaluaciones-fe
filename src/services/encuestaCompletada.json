@@ -1,0 +1,59 @@
+[{
+        "IdColaborador": 109,
+        "IdEvaluacion": 37,
+        "IdEvaluador": 5094,
+        "Respuesta": [{
+                "IdPregunta": 666,
+                "IdDetallePregunta": 999,
+                "Comentario": ""
+            },
+            {
+                "IdPregunta": 777,
+                "IdDetallePregunta": 888,
+                "Comentario": ""
+            },
+            {
+                "IdPregunta": 555,
+                "IdDetallePregunta": 777,
+                "Comentario": ""
+            },
+            {
+                "IdPregunta": 444,
+                "IdDetallePregunta": 312,
+                "Comentario": ""
+            }
+        ]
+    },
+    {
+        "EvaluadoPor": 0,
+        "IdColaborador": 46950,
+        "IdEvaluacion": 3533,
+        "Respuesta": [
+            { "idPregunta": 73, "idRespuesta": 2, "IdRespuestaPorPregunta": 339136, "txtComentario": "" },
+            { "idPregunta": 74, "idRespuesta": 3, "IdRespuestaPorPregunta": 339103, "txtComentario": "" },
+            { "idPregunta": 76, "idRespuesta": 2, "IdRespuestaPorPregunta": 339156, "txtComentario": "" },
+            { "idPregunta": 77, "idRespuesta": 1, "IdRespuestaPorPregunta": 339113, "txtComentario": "" },
+            { "idPregunta": 29, "idRespuesta": 4, "IdRespuestaPorPregunta": 339110, "txtComentario": "" },
+            { "idPregunta": 31, "idRespuesta": 1, "IdRespuestaPorPregunta": 339129, "txtComentario": "" },
+            { "idPregunta": 32, "idRespuesta": 2, "IdRespuestaPorPregunta": 339140, "txtComentario": "" },
+            { "idPregunta": 83, "idRespuesta": 3, "IdRespuestaPorPregunta": 339123, "txtComentario": "" },
+            { "idPregunta": 84, "idRespuesta": 2, "IdRespuestaPorPregunta": 339168, "txtComentario": "" },
+            { "idPregunta": 85, "idRespuesta": 1, "IdRespuestaPorPregunta": 339117, "txtComentario": "" },
+            { "idPregunta": 86, "idRespuesta": 1, "IdRespuestaPorPregunta": 339157, "txtComentario": "" },
+            { "idPregunta": 87, "idRespuesta": 4, "IdRespuestaPorPregunta": 339078, "txtComentario": "" },
+            { "idPregunta": 88, "idRespuesta": 4, "IdRespuestaPorPregunta": 339082, "txtComentario": "s" },
+            { "idPregunta": 89, "idRespuesta": 4, "IdRespuestaPorPregunta": 339162, "txtComentario": "" },
+            { "idPregunta": 90, "idRespuesta": 1, "IdRespuestaPorPregunta": 339105, "txtComentario": "" },
+            { "idPregunta": 91, "idRespuesta": 3, "IdRespuestaPorPregunta": 339127, "txtComentario": "" },
+            { "idPregunta": 92, "idRespuesta": 3, "IdRespuestaPorPregunta": 339147, "txtComentario": "" },
+            { "idPregunta": 93, "idRespuesta": 2, "IdRespuestaPorPregunta": 339152, "txtComentario": "ss" },
+            { "idPregunta": 94, "idRespuesta": 3, "IdRespuestaPorPregunta": 339095, "txtComentario": "" },
+            { "idPregunta": 95, "idRespuesta": 1, "IdRespuestaPorPregunta": 339085, "txtComentario": "" },
+            { "idPregunta": 96, "idRespuesta": 2, "IdRespuestaPorPregunta": 339092, "txtComentario": "" },
+            { "idPregunta": 97, "idRespuesta": 1, "IdRespuestaPorPregunta": 339097, "txtComentario": "" },
+            { "idPregunta": 98, "idRespuesta": 3, "IdRespuestaPorPregunta": 339075, "txtComentario": "" },
+            { "idPregunta": 99, "idRespuesta": 3, "IdRespuestaPorPregunta": 339143, "txtComentario": "" }
+
+        ]
+    }
+]

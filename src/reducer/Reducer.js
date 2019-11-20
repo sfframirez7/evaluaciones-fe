@@ -1,30 +1,19 @@
 import { combineReducers } from 'redux'
-import PeriodicidadReducer from './PeriodicidadReducer'
-import MesSelectReducer from './MesSelectReducer'
-import AreaSelectReducer from './AreaSelectReducer'
 import ColaboradoresReducer from './ColaboradoresReducer'
-import TableroReducer from './TableroReducer'
+import ReasignacionesReducer from './ReasignacionesReducer'
+import SubAreasReducer from './SubAreasReducer'
 import ColaboradorSelectedReducer from './ColaboradorSelectedReducer'
-import MostrarPanelCompaneros from './MostrarPanelCompaneros'
-import BrujulaReducer from './BrujulaReducer'
-import EstadosBrujula from './EstadosBrujula'
-import SesionReducer from './SesionReducer'
-import CounterSesionReducer from './CounterSesionReducer'
-import TimerReducer from './TimerReducer'
-import TotalActividadesNuevasReducer from './TotalActividadesNuevasReducer'
+import ReasignacionesLoadedReducer from './ReasignacionesLoadedReducer'
+import EvaluacionSelectedReducer from './EvaluacionSelectedReducer'
+
 
 export default combineReducers({
-    PeriodicidadReducer,
-    MesSelectReducer,
-    AreaSelectReducer,
+
     ColaboradoresReducer,
-    TableroReducer,
+    ReasignacionesReducer,
+    SubAreasReducer,
     ColaboradorSelectedReducer,
-    MostrarPanelCompaneros,
-    BrujulaReducer,
-    EstadosBrujula,
-    SesionReducer,
-    CounterSesionReducer,
-    TimerReducer,
-    TotalActividadesNuevasReducer
+    ReasignacionesLoadedReducer,
+    EvaluacionSelectedReducer
+
 })

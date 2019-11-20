@@ -7,7 +7,7 @@ const intialState = {
 const ColaboradorSelectedReducer = (state = intialState, action) => {
 
     switch (action.type) {
-        case 'ACTUALIZAR_COLABORADOR':
+        case 'SELECT_COLABORADOR':
             return action.data;
         default:
             return state;

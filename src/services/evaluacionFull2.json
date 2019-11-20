@@ -1,0 +1,961 @@
+[{
+    "IdEvaluacion": 59,
+    "IdColaborador": 39015,
+    "Anio": 2019,
+    "IdGrado": 4,
+    "EncabezadoPreguntas": [{
+            "IdGradoPorCompetencia": 14,
+            "Detalle": "Capacidad de integrar todos los recursos y esfuerzos hacia el logro de los objetivos, fijando metas desafiantes por encima de los estándares y  tomando decisiones en forma responsable que garanticen el cumplimiento de la estrategia, la administración del riesgo y la maximización de la rentabilidad del organización.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 76,
+                    "Pregunta": "¿Cumple con su trabajo de acuerdo a lo programado?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 73,
+                    "Pregunta": "¿Hace correctamente su trabajo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 74,
+                    "Pregunta": "¿Recomienda ideas para hacer mejoras en los procesos de trabajo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 77,
+                    "Pregunta": "¿Sigue los procedimientos establecidos?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "IdGradoPorCompetencia": 24,
+            "Detalle": "Capacidad para identificar y comprender rápidamente los cambios en el entorno de la organización, tanto interno como externo, transformar las debilidades en fortalezas y potenciar estas últimas a través de planes de acción tendientes a asegurar en el largo plazo la presencia y el posicionamiento de la organización y la consecución de las metas deseadas.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 98,
+                    "Pregunta": "¿Accede a cambiar sus ideas o percepciones con base a nueva información o evidencias validas?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 96,
+                    "Pregunta": "¿Busca las oportunidades para aportar nuevas ideas?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 99,
+                    "Pregunta": "¿Permite que otras personas le expresen ideas contrarias a las seguidas por él?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 97,
+                    "Pregunta": "¿Realiza propuestas que hacen más eficientes los procesos internos de su área?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "IdGradoPorCompetencia": 20,
+            "Detalle": "Capacidad para sentir y obrar en todo momento de acuerdo con los valores morales y las buenas costumbres y practicas profesionales y respetar las políticas organizaciones. Implica sentir y obrar de este modo en todo momento, tanto en la vida profesional y laboral como en la vida privada, aun en forma contraria a supuestos intereses propios o del sector/organización al que pertenecen, ya que las buenas costumbres y los valores morales están por encima de un accionar y la organización a si lo desea y lo comprende.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 88,
+                    "Pregunta": "¿Actúa sobre la base de valores morales, buenas costumbres y prácticas organizacionales?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 89,
+                    "Pregunta": "¿Demuestra sus valores éticos en diferentes esferas de actuación: profesionales, en la conducción de personas y en el trato con compañeros, respecto del medio ambiente y en el ámbito de la sociedad y la familia?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 91,
+                    "Pregunta": "¿Es un modelo para sus compañeros por su comportamiento ético, tanto en lo laboral como en los demás ámbitos de su vida?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 90,
+                    "Pregunta": "¿Respeta las políticas y los valores de la organización?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "IdGradoPorCompetencia": 22,
+            "Detalle": "Capacidad para colaborar con los demás, formar parte de un grupo y trabajar con otras áreas de la organización con el propósito de alcanzar, en conjunto, la estrategia organizacional, subordinar los intereses personales a los objetivos grupales. Implica tener expectativas positivas respecto a los demás, comprender a los otros , generar y mantener un buen clima de trabajo.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 95,
+                    "Pregunta": "¿Ayuda a otras personas a integrarse al equipo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 94,
+                    "Pregunta": "¿Comparte información y recursos con los otros miembros del equipo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 92,
+                    "Pregunta": "¿Contribuye en las tareas asignadas dentro del equipo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 93,
+                    "Pregunta": "¿Coopera con otras personas para facilitar el trabajo?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "IdGradoPorCompetencia": 18,
+            "Detalle": "Capacidad de realizar con excelencia el trabajo, enfocando consistentemente las acciones al mejoramiento continuo, para generar productos y prestar servicios de calidad, que aporten valor al cliente, minimicen costos y aumenten la eficiencia operacional.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 87,
+                    "Pregunta": "¿Acepta retroalimentación sobre la calidad de los trabajos presentados?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 86,
+                    "Pregunta": "¿Define metas individuales de trabajo para el logro de las metas de su área?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 84,
+                    "Pregunta": "¿Ejecuta tareas asignadas para el logro de las metas?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 85,
+                    "Pregunta": "¿Sigue sus propias mediciones para monitorear su avance con respecto a las metas?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "IdGradoPorCompetencia": 16,
+            "Detalle": "Capacidad para actuar con sensibilidad ante las necesidades de un cliente y/o conjunto de clientes, actuales o potenciales, externos o internos, que se puedan presentar en la actualidad o en el futuro. Implica una vocación permanente de servicio al cliente interno y externo, comprender adecuadamente sus demandas y generar soluciones efectivas a sus necesidades.",
+            "GradoPuesto": "D",
+            "Nivel": "N1",
+            "Preguntas": [{
+                    "IdPregunta": 83,
+                    "Pregunta": "¿Es amable y cortés al atender a los clientes, sin importar el medio de comunicación?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 31,
+                    "Pregunta": "¿Establece empatía con el cliente en su trato personal?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 32,
+                    "Pregunta": "¿Ofrece al cliente más de lo esperado, excediendo sus expectativas?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                },
+                {
+                    "IdPregunta": 29,
+                    "Pregunta": "¿Resuelve con prontitud los requerimientos del cliente, comprometiéndose personalmente a darle una respuesta?",
+                    "IdTipoRespuesta": 1,
+                    "Respuestas": [{
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 1,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "100% Siempre",
+                            "Valor": 100,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 4,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "25% Nunca",
+                            "Valor": 25,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 3,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "50% Casi nunca",
+                            "Valor": 50,
+                            "ValorSeteado": 0
+                        },
+                        {
+                            "IdRespuestaPorPregunta": 0,
+                            "IdDetallePregunta": 2,
+                            "Descripcion": "Única                                             ",
+                            "Etiqueta": "75% Casi siempre",
+                            "Valor": 75,
+                            "ValorSeteado": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}]
