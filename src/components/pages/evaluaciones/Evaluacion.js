@@ -62,7 +62,7 @@ class Evaluacion extends Component {
         var data = LoadJsonService()
         this.setState({evaluaciones : data})
         this.ObtenerEvaluacionPorMeta()
-        // this.ObtenerEvaluacion()
+        this.ObtenerEvaluacion()
 
       }
     
