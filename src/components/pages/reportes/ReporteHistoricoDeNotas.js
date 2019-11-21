@@ -64,6 +64,8 @@ class ReporteHistoricoDeNotas extends Component {
         console.log(idColaborador)
         this.ObtenerResultados(idColaborador)
         this.stepper.next()
+        console.log("'object'")
+        console.log("'object'")
     }
 
 
