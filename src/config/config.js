@@ -12,8 +12,8 @@ export const store = createStore(Reducer);
 
 /* Desarrollo */
 
-const UrlBase = "http://10.1.133.2:8088"
-    // const UrlBase = "http://localhost:8087"
+//const UrlBase = "http://10.1.133.2:8088"
+     const UrlBase = "http://localhost:8088"
 
 
 
