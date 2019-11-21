@@ -61,7 +61,7 @@ class ReporteHistoricoDeNotas extends Component {
     SeleccionarColaborador(idColaborador)
     {
         this.setState({IdColaborador : idColaborador})
-        this.ObtenerResultados(39015)
+        this.ObtenerResultados(idColaborador)
         this.stepper.next()
     }
 
