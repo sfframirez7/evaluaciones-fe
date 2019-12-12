@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Swal from "sweetalert2";
 
-
-import {RemoverReasignacion, ObtenerReasignaciones} from '../../../services/ReasignacionService'
+import {RemoverReasignacionService, ObtenerReasignaciones} from '../../../services/ReasignacionService'
+import Loading from '../../common/Loading';
+import NoData from '../../common/NoData';
 
 class TablaReasignaciones extends Component {
 
 
     constructor() {
         super();
+
+        this.state ={
+            cargando : false
+        }
         
         this.RemoverReasignacion = this.RemoverReasignacion.bind(this)
         this._ObtenerReasignaciones = this._ObtenerReasignaciones.bind(this)
@@ -17,7 +23,24 @@ class TablaReasignaciones extends Component {
 
     RemoverReasignacion(IdAginacion)
     {
-        RemoverReasignacion(IdAginacion)
+        this.setState({cargando : true})
+
+        RemoverReasignacionService(IdAginacion)
+        .then(res => {
+            this.setState({cargando : false})
+            Swal.fire({
+                title: 'Información guardada exitosamente',
+                icon: 'success',
+                text: "Éxito",
+            });
+
+            this._ObtenerReasignaciones()
+
+        }).catch((error) => {
+            this.setState({cargando : false})
+            console.log(error)
+            this.setState({ cargando: false });
+        })
         
     }
 
@@ -39,6 +62,12 @@ class TablaReasignaciones extends Component {
         return (
 
             <div className="bg-white" style={{overflow:'auto'}}>
+                  <div className="row">
+                        <div className="col text-center">
+                            <Loading Cargando={this.state.cargando} />
+                        </div>
+                    </div>
+
 
                 <table className="table table-striped table-hover  bg-white ">
                     <thead>
@@ -56,7 +85,7 @@ class TablaReasignaciones extends Component {
                                 Área Destino
                             </th>
                             <th>
-                                Modifico por
+                                Modifica por
                             </th>
                             
                             <th>
@@ -91,7 +120,7 @@ class TablaReasignaciones extends Component {
                                             data-placement="top" 
                                             title="Elimar de reasignaciones" 
                                             // onClick={() => Prueba()}>
-                                            onClick={() => RemoverReasignacion(colaborador.IdAsignacion)}>
+                                            onClick={() => this.RemoverReasignacion(colaborador.IdAsignacion)}>
                                             <i className="fa fa-trash-o" aria-hidden="true"></i>
                                             {/* <span className="m-1">
                                                 Eliminar
@@ -103,6 +132,11 @@ class TablaReasignaciones extends Component {
                         })}
                     </tbody>
                 </table>
+
+                    <div className="col text-center">
+                        <NoData NoData={this.props.reasignaciones.length === 0 && !this.state.cargando}/>
+                    </div>
+
 
             </div>
         );

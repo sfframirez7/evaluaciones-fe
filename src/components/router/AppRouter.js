@@ -20,16 +20,20 @@ import Mantenimientos from '../pages/mantenimientos/Mantenimientos';
 import Reportes from '../pages/reportes/Reportes';
 
 import {LoadOpcionesDeMenuService} from '../../services/MenuService'
+import MisEvaluaciones from '../pages/evaluaciones/MisEvaluaciones';
+import ResumenEvaluaciones from '../pages/evaluaciones/ResumenEvaluaciones';
+import UsuarioPage from '../pages/usuario/UsuarioPage';
+import ReporteGeneralPorEquipo from '../pages/reportes/ReporteGeneralPorEquipo';
 class AppRouter extends React.Component {
 
     constructor(props)
     {
         super(props)
 
-        var user = JwtPayload().usuario      
-
+        var user = JwtPayload().usuario     
         this.state = {
             EmpleadoNombre: user.Nombre,
+            codigoEmpleado : user.IdColaborador,
             PerfilId: user.PerfilCod,
             opcioneDeMenu : []
         }
@@ -60,12 +64,22 @@ class AppRouter extends React.Component {
 
                                 <li className="nav-item active">
                                     <Link className="nav-link font-weight-bold" to="/">
-                                    <i className="fa fa-file-text iconoMenu pt-1" aria-hidden="true"></i>
+                                    <i className="fa fa-list iconoMenu pt-1" aria-hidden="true"></i>
                                         <span className="menuItem">
-                                            Evaluaciones
+                                        Mis Evaluaciones
                                         </span> 
                                     </Link>
                                 </li>
+                               
+                                <li className="nav-item active">
+                                    <Link className="nav-link font-weight-bold" to="/evaluacionesEquipo">
+                                    <i className="fa fa-file-text iconoMenu pt-1" aria-hidden="true"></i>
+                                        <span className="menuItem">
+                                            Evaluaciones equipo
+                                        </span> 
+                                    </Link>
+                                </li>
+                               
 
                                 {this.state.opcioneDeMenu.map((opcion, index)=> {
                                     return (
@@ -81,53 +95,56 @@ class AppRouter extends React.Component {
                                         </li>
                                     )
                                 })}
-{/*                                 
-                                <li className={"nav-item active " }>
-                                    <Link className="nav-link font-weight-bold" to="/reasignaciones">
-                                    <i className="fa fa-pencil-square iconoMenu pt-1" aria-hidden="true"></i>
-                                        <span className="menuItem">
-                                            Reasignaciones
-                                        </span> 
-                                    </Link>
-                                </li>
-                               
-                                <li className="nav-item active">
-                                    <Link className="nav-link font-weight-bold" to="/settings">
-                                    <i className="fa fa-cog iconoMenu pt-1" aria-hidden="true"></i>
-                                        <span className="menuItem">
-                                            Settings
-                                        </span> 
-                                    </Link>
-                                </li>
-                               
-                                <li className="nav-item active">
-                                    <Link className="nav-link font-weight-bold" to="/reportes">
-                                    <i className="fa fa-line-chart iconoMenu pt-1" aria-hidden="true"></i>
-                                        <span className="menuItem">
-                                            Reportes
-                                        </span> 
-                                    </Link>
-                                </li> */}
+
                                 
                             </ul>
                         <form className="form-inline my-2 my-lg-0">
-                            <span className="p-2">
-                                {this.state.EmpleadoNombre}
-                            </span>
-                            <BtnLogOut />
+
+                            <button type="button" className="btn btn-link iconoMenu " data-toggle="modal" data-target="#exampleModal3">
+                                <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+                            </button>
+
                         </form>
                         </div>
                     </nav>
+
+                    <div className="modal fade" id="exampleModal3" tabIndex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModal3Label">Perfil</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <strong>{this.state.codigoEmpleado}</strong> -
+                                <span className="p-2">
+                                    {this.state.EmpleadoNombre}
+                                </span>
+                            
+                            </div>
+                            <div className="modal-footer">
+                                <BtnLogOut Text="Cerrar Sesión"></BtnLogOut>
+                                <Link className="nav-link font-weight-bold" to="/user/changePassword" data-target="#exampleModal3">
+                                    <button type="button" className="btn btn-info"  >Cambiar contraseña</button>
+                                </Link>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
 
-                <Route path="/" exact component={Evaluaciones} />
+                <Route path="/evaluacionesEquipo" exact component={Evaluaciones} />
+                <Route path="/" exact component={MisEvaluaciones} />
                 <Route path="/equipo/:data?" exact component={Colaboradores} />
                 <Route path="/evaluacion/:data?/:data2?" component={Evaluacion} />
-                {/* <Route path="/settings" component={Mantenimientos} />
-                <Route path="/reportes" component={Reportes} /> */}
-                {/* <Route path="/reasignaciones" component={Reasignaciones} /> */}
-                {/* <PrivateRoute authed={true} route="/reasignaciones" path='/reasignaciones' component={Reasignaciones} /> */}
+                <Route path="/resumenEvaluaciones" component={ResumenEvaluaciones} />
+                <Route path="/resumenEquipo" component={ReporteGeneralPorEquipo} />
+                <Route path="/user/changePassword" component={UsuarioPage} />
                 <PrivateRoute authed={true} route="/reasignaciones" path='/reasignaciones' component={Reasignaciones} />
                 <PrivateRoute authed={true} route="/reportes" path='/reportes' component={Reportes} />
                 <PrivateRoute authed={true} route="/settings" path='/settings' component={Mantenimientos} />

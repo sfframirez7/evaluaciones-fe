@@ -12,6 +12,7 @@ import {ObtenerColaboradorespendientesService} from '../../../services/Colaborad
 import {ObtenerTodasEvaluacionesAnualesService} from '../../../services/EvaluacionesService'
 import {ObtenerSubAreas} from '../../../services/SubAreasService'
 import BtnExportToExcel from '../../common/BtnExportToExcel';
+import NoData from '../../common/NoData';
 
 class PendientesDeEvaluacion extends Component {
 
@@ -43,8 +44,6 @@ class PendientesDeEvaluacion extends Component {
             linear: false,
             animation: true,
           })
-
-        //   this.ObtenerColaboradorespendientes()
           this.ObtenerEvaluacioneAnuales()
           ObtenerSubAreas()
 
@@ -153,10 +152,7 @@ class PendientesDeEvaluacion extends Component {
                 <h4 className="font-weight-bold">
                     Colaboradores Pendientes de Evaluación
                 </h4>
-                <h4 className="">
-                    Colaboradores Pendientes de Evaluación
-                </h4>
-
+              
                 <div className="row">
                     <div className="col text-center">
                         <Loading Cargando={this.state.cargando} ></Loading>
@@ -193,6 +189,8 @@ class PendientesDeEvaluacion extends Component {
                                                 <div className="col">
 
                                                     <div style={{overflowX: 'auto'}}>
+                                                        
+                                                        <h3 className="font-weight-bold">Seleccionar evaluación</h3>
 
 
                                                         <table className="table table-striped table-hover  bg-white" >
@@ -241,7 +239,7 @@ class PendientesDeEvaluacion extends Component {
                                                 
                                                 <div className="row my-2">
                                                     
-                                                    <div className="col-12 col-md-5 text-center">
+                                                    <div className="col-12 col-md-4 text-center">
 
                                                         <h4 className="card-title font-weight-bold">Nombre:</h4>                
                                                         <input 
@@ -251,16 +249,22 @@ class PendientesDeEvaluacion extends Component {
                                                             placeholder="Nombre..." />  
 
                                                     </div>
-                                                    <div className="col-12 col-md-7 text-center">
+                                                    <div className="col-12 col-md-6 text-center">
                                                         <h4 className="card-title font-weight-bold">Área:</h4>
                                                             <select 
                                                                 value={this.state.IdSubArea} 
-                                                                className="custom-select col-12 col-md-6 form-control" 
+                                                                className="custom-select col-12 col-md-7 form-control" 
                                                                 id="cmbSubAreas" 
                                                                 onChange={ this.AreaChangedHandler }>
                                                                 <option value="0" >Seleccionar Área</option>
                                                                 { this.props.subAreas.map((subArea, index) => <option key={index} value={subArea.IdSubArea}>{subArea.SubArea}</option>) }
                                                             </select>                  
+                                                    </div>
+
+                                                    <div className="col">
+                                                        <div className="d-flex flex-wrap align-content-center">
+                                                            <h5>Total: <span className="badge badge-secondary">{this.state.colaboradores.length}</span></h5>
+                                                        </div>
                                                     </div>
 
                                                    
@@ -311,6 +315,11 @@ class PendientesDeEvaluacion extends Component {
                                                                 </tbody>
                                                             </table>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col text-center">
+                                                        <NoData NoData={this.state.colaboradores.length === 0 && !this.state.cargando}/>
                                                     </div>
                                                 </div>
                                         </div>

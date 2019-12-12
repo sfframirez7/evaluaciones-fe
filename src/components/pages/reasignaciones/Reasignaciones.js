@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import {ObtenerReasignaciones} from '../../../services/ReasignacionService'
 
-import TituloPrincipal  from '../../common/TituloPrincipal'
+import {Link} from 'react-router-dom'
 import TablaReasignaciones from './TablaReasignaciones'
 import NuevaAsignacion from './NuevaAsignacion'
+import Loading from '../../common/Loading';
 
 class Reasignaciones extends Component {
 
@@ -45,7 +46,7 @@ class Reasignaciones extends Component {
         this.setState( { txtBuscar : txtBuscar })
 
             var data = this.state.reasignacionesLoaded.filter((colaborador) => {
-                if (colaborador.NombreColaborador.toString().toLowerCase().indexOf(txtBuscar) > -1)
+                if (colaborador.NombreColaborador.toString().toLowerCase().indexOf(txtBuscar.toLowerCase()) > -1)
                     return true
                 else
                     return ""
@@ -53,8 +54,6 @@ class Reasignaciones extends Component {
 
             this.props.dispatch({ type: 'LOAD_REASIGNACIONES', data: data })
 
-
-        // FilterReasignacionService(txtBuscar)
     }
     
 
@@ -65,16 +64,23 @@ class Reasignaciones extends Component {
             <div>
                 <div className="container">
 
-                    <div className="row">
-                        <div className="col">
-                            <TituloPrincipal Titulo="Reasignaciones"/>
-                        </div>
-                    </div>
+                <nav aria-label="breadcrumb bg-white d-print-none">
+                    <ol className="breadcrumb bg-white">
+                        <li className="breadcrumb-item">
+                            <Link to={{ pathname: '/settings', }}>
+                                Mantenimientos
+                            </Link>
+                        
+                        </li>
+                        <li className="breadcrumb-item active" aria-current="page">Reasignaciones</li>
+                    </ol>
+                </nav>
 
-                    <div className="row">
-                        <div className="col">
-                        </div>
-                    </div>
+
+                <h2 className="font-weight-bold">
+                    Reasignaciones
+                </h2>
+
 
                     <div className="row">
                         <div className="col text-right p-1 m-1">
@@ -87,7 +93,6 @@ class Reasignaciones extends Component {
                                     Nueva
                                 </span>
                             </button>
-                           
 
                         </div>
                     </div>
@@ -100,6 +105,12 @@ class Reasignaciones extends Component {
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col text-center">
+                            <Loading Cargando={this.state.cargando} ></Loading>
                         </div>
                     </div>
 

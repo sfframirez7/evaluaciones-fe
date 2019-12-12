@@ -27,9 +27,10 @@ class MenuReportes extends Component {
     {
         var reportes  = [
             {Nombre: "Reporte general", Descripcion: "Descripción...", Ruta: "/reportes/reporteGeneral", Icono :"fa-id-card-o"},
+            {Nombre: "Resumen general", Descripcion: "Descripción...", Ruta: "/reportes/resumenGeneral", Icono :"fa-id-card-o"},
             {Nombre: "Reporte histórico de notas", Descripcion: "Descripción...", Ruta: "/reportes/reporteHistoricoNotas", Icono :"fa-id-card-o"},
             {Nombre: "Colaboradores pendientes de evaluación", Descripcion: "Descripción...", Ruta: "/reportes/pendientesDeEvaluacion", Icono :"fa-id-card-o"},
-            {Nombre: "Resultado evaluación por competencias conductuales", Descripcion: "Descripción...", Ruta: "/reportes/one", Icono :"fa-id-card-o"}
+            {Nombre: "Resultado evaluación por competencias conductuales", Descripcion: "Descripción...", Ruta: "/reportes/compentenciasConductuales", Icono :"fa-id-card-o"}
         ]
 
         this.setState({Reportes : reportes})
@@ -65,73 +66,6 @@ class MenuReportes extends Component {
                                )
                            })}
 
-
-                           
-                            {/* <Link to={{pathname: '/reportes/reporteGeneral',}} className="list-group-item list-group-item-action flex-row align-items-start">
-                                <div className="row">
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1 font-weight-bold">Reporte general</h5>
-                                            </div>
-                                            <p className="mb-1">Descripción...</p>
-                                        </div>
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-lg text-primary " aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                            </Link>
-                            <Link to={{pathname: '/reportes/reporteHistoricoNotas',}} className="list-group-item list-group-item-action flex-row align-items-start">
-                                <div className="row">
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">Reporte historico de notas</h5>
-                                            </div>
-                                            <p className="mb-1">Descripción...</p>
-                                        </div>
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-lg text-primary " aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                            </Link>
-                            <Link to={{pathname: '/reportes/pendientesDeEvaluacion',}} className="list-group-item list-group-item-action flex-row align-items-start">
-                                <div className="row">
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">Colaboradores pendientes de evaluación</h5>
-                                            </div>
-                                            <p className="mb-1">Descripción...</p>
-                                        </div>
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-lg text-primary " aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                            </Link>
-                            <Link to={{pathname: '/reportes/one',}} className="list-group-item list-group-item-action flex-row align-items-start">
-                                <div className="row">
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">Resultado evaluación por competencias conductuales</h5>
-                                            </div>
-                                            <p className="mb-1">Descripción...</p>
-                                        </div>
-                                        <div className="col-2 col-md-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-lg text-primary " aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                            </Link>
-                            */}
                         </div>  
 
                     </div>

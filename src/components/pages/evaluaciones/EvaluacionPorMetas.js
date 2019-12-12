@@ -54,8 +54,6 @@ class EvaluacionPorMetas extends Component {
             return false
         } 
 
-        console.log("object")
-
 
         var objeto = {
             idPregunta : idPregunta,
@@ -94,7 +92,6 @@ class EvaluacionPorMetas extends Component {
             this.setState({Respuestas : filtered})
         }
 
-        console.log(this.state.Respuestas)
     }
 
 
@@ -153,7 +150,11 @@ class EvaluacionPorMetas extends Component {
                             error = true
                             return true
                         }
+                        else 
+                            return false
                     }
+                    else 
+                        return false
             })
             return error
 

@@ -1,7 +1,5 @@
 import { axios, store } from '../config/config'
 
-
-
 export const ObtenerSubAreas = () => {
 
     return axios.get('/SubAreas')

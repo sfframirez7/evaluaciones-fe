@@ -8,12 +8,13 @@ import Stepper from 'bs-stepper'
 import Loading from '../../common/Loading';
 
 import {ObtenerResultadosService} from '../../../services/ResultadosService'
-import {ObtenerSubAreas, ObtenerColaboradoresPorArea} from '../../../services/SubAreasService'
+import {ObtenerColaboradoresPorCargoService} from '../../../services/ColaboradoresService'
 
 import {ColaboradorModel} from '../../../Models/ColaboradorModel'
 import BtnPDF from '../../common/BtnPDF';
 import UsuarioLogueado from '../../common/UsuarioLogueado';
 
+import {ObtenerAreasService} from '../../../services/AreaService'
 
 class ReporteHistoricoDeNotas extends Component {
 
@@ -25,7 +26,8 @@ class ReporteHistoricoDeNotas extends Component {
             colaboradores : [],
             colaboradoresLoaded : [],
             evaluaciones : [],
-            IdSubArea : 0,
+            areas : [],
+            IdArea : 0,
             txtBuscar : "",
             IdEvaluacionanual :0,
             IdColaborador : 0,
@@ -40,7 +42,7 @@ class ReporteHistoricoDeNotas extends Component {
         this.AreaChangedHandler = this.AreaChangedHandler.bind(this)
         this.ObtenerResultados = this.ObtenerResultados.bind(this)
         this.SeleccionarColaborador = this.SeleccionarColaborador.bind(this)
-        
+        this.ObtenerAreas = this.ObtenerAreas.bind(this)
     }
 
 
@@ -51,10 +53,20 @@ class ReporteHistoricoDeNotas extends Component {
             animation: true,
           })
 
-          ObtenerSubAreas()
-
+          this.ObtenerAreas()
     }
 
+
+    ObtenerAreas()
+    {
+        this.setState({ cargando : true})
+        ObtenerAreasService()
+        .then((res) => {
+            this.setState({areas: res.data, cargando : false})
+        }).catch((err) => {
+            this.setState({ cargando : false})
+        });
+    }
 
 
     
@@ -90,6 +102,7 @@ class ReporteHistoricoDeNotas extends Component {
                 }
                 totalAnio = totalAnioActual
                 resultados.push(objResultado)
+                return objResultado
             })
 
             res.data.Resultados = resultados
@@ -104,11 +117,17 @@ class ReporteHistoricoDeNotas extends Component {
   
     
 
+    
     AreaChangedHandler(event)
     {
-        var IdSubArea = event.target.value
-        this.setState({IdSubArea})
-        ObtenerColaboradoresPorArea(IdSubArea)
+        var IdArea = event.target.value
+        this.setState({IdArea})
+        ObtenerColaboradoresPorCargoService(IdArea)
+        .then((res) => {
+            this.props.dispatch({ type: 'LOAD_COLABORADORES', data: res.data })
+        }).catch((err) => {
+            
+        });
     }
 
 
@@ -167,26 +186,31 @@ class ReporteHistoricoDeNotas extends Component {
                             </div>
                             <div className="bs-stepper-content">
                                     <div id="test-l-1" className="content">
-                                    <div className="row my-2">
-                                                <div className="col-12  text-center">
-                                                <h4 className="card-title font-weight-bold">Área:</h4>
+
+                                        <div className="row">
+                                            <div className="col-12 text-center">
+                                                <div className="form-group">
+                                                    <h4 className="card-title font-weight-bold">Área:</h4>
                                                     <select 
-                                                        value={this.state.IdSubArea} 
+                                                        value={this.state.IdCargo} 
                                                         className="custom-select col-12 col-md-4 form-control" 
                                                         id="cmbSubAreas" 
                                                         onChange={ this.AreaChangedHandler }>
-                                                        <option value="0" >Seleccionar Área</option>
-                                                        { this.props.subAreas.map((subArea, index) => <option key={index} value={subArea.IdSubArea}>{subArea.SubArea}</option>) }
-                                                    </select>                  
+                                                            <option value="0" >Seleccionar área:</option>
+                                                            { this.state.areas.map((area, index) => <option key={index} value={area.IdArea}>{area.Area}</option>) }
+                                                    </select>
                                                 </div>
-                                            </div>      
+                                            </div>
+                                        </div>  
+
+                   
                                             
                                             <div className="row">
                                                 <div className="col-12 col-md-10 offset-md-1">
                                                     
                                                     <div style={{overflowX: 'auto'}}>
                                                                                                 
-                                                        <table className="table table-striped table-hover  bg-white" >
+                                                        <table className="table table-striped table-hover table-sm bg-white" >
                                                             <thead>
                                                                 <tr>
                                                                     <th>

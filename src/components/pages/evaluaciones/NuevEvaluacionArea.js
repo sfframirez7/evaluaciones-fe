@@ -5,6 +5,7 @@ import {NuevaEvaluacionPorMetaService} from '../../../services/EvaluacionesServi
 import {ObtenerEquipoPorEvaluacion} from '../../../services/ColaboradoresService'
 
 import Swal from "sweetalert2";
+import Loading from '../../common/Loading';
 
 class NuevEvaluacionArea extends Component {
 
@@ -13,13 +14,14 @@ class NuevEvaluacionArea extends Component {
         super(props);
 
         this.state = {
+            cargando : true,
             EvaluacionPadre : this.props.EvaluacionPadre,
             metricas : [],
             colaboradores : [],
             colaboradersSelected : [],
             Titulo : "",
             Descripcion : "",
-            chkTodaElArea : true,
+            chkTodaElArea : false,
             txtMetricaDescripcion : "",
             txtValorMetrica : 0,
             totalPorcentajeMetrica : 0
@@ -129,6 +131,9 @@ class NuevEvaluacionArea extends Component {
         var colaboradersSelected = this.state.colaboradersSelected.filter((colaborador, index)=>{
             if(colaborador.IdColaborador !== colaboradorId)
                 return true
+                else {
+                    return false
+                }
         });
 
 
@@ -142,6 +147,8 @@ class NuevEvaluacionArea extends Component {
         var colaboradersSelected = this.state.colaboradersSelected.filter((colaborador, index)=>{
             if(colaborador.IdColaborador !== colaboradorId)
                 return true
+            else
+                return false
         });
 
         this.setState({colaboradersSelected}) 
@@ -180,8 +187,6 @@ class NuevEvaluacionArea extends Component {
 
             return false
         }
-
-        console.log(this.state.totalPorcentajeMetrica)
 
         if(parseInt(this.state.totalPorcentajeMetrica) !== 100 )
         {
@@ -274,7 +279,6 @@ class NuevEvaluacionArea extends Component {
         delete metricas[index]
         this.setState({metricas})
         this.CalcularTotalMetrica()
-        console.log(this.state.metricas)
     }
 
     ClearData()
@@ -296,6 +300,8 @@ class NuevEvaluacionArea extends Component {
         if(!this.ValidateDataNuevaEvaluacion())
             return
 
+        this.setState({cargando : true})
+
         var metricas = this.state.metricas.filter(function(metrica, index, arr){
             return parseInt( metrica.Meta) > 0;
         });
@@ -307,15 +313,13 @@ class NuevEvaluacionArea extends Component {
             "Descripcion": this.state.Descripcion,
             "CreadaPor": 0,
             "ModificadaPor": 0,
-            "IdSubArea": 0,
+            "IdCargoPadre": 0,
             "IdPadre": parseInt( this.state.EvaluacionPadre),
             "TodoElEquipo": this.state.chkTodaElArea,
             "Preguntas": metricas,
             "Colaboradores" : this.state.colaboradersSelected
             }
 
-            console.log("nuevaEvaluacion", nuevaEvaluacion)
-            // return
 
         NuevaEvaluacionPorMetaService(nuevaEvaluacion)
         .then(res => {
@@ -325,10 +329,11 @@ class NuevEvaluacionArea extends Component {
                 icon: 'success',
                 text: "Éxito",
             });
-            window.location.reload()
+            this.setState({cargando : false})
+            window.history.back();
 
         }).catch((error) => {
-            console.log(error)
+            this.setState({cargando : false})
             Swal.fire({
                 title: 'No se ha podido crea la nueva evaluación.'+error.response ? error.response.data : "",
                 icon: 'error',
@@ -341,7 +346,7 @@ class NuevEvaluacionArea extends Component {
     render() {
         return (
             <div>
-                
+                 
                     
                 <div className="row">
                     <div className="col-12 col-md-6 offset-md-3">
@@ -382,7 +387,120 @@ class NuevEvaluacionArea extends Component {
                             <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <strong>¡Instrucciones!</strong> Crea las métricas con su respectivo porcentaje de evaluación con las cuales mediras a tu equipo, la sumatoria de dichas métrias debe ser 100%
+                            <strong>Instrucciones:</strong> Selecciona los colaboradores a aplicar esta evaluación ó selecciona <i>toda el área</i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div className="row m-3">
+                    <div className="col-12 col-md-6 offset-md-3 text-center">
+                        <div className="custom-control custom-checkbox">
+                            <input 
+                                type="checkbox" 
+                                className="custom-control-input" 
+                                id="customCheck1"
+                                checked={this.state.chkTodaElArea}
+                                onChange={this.chkTodaElAreaHanlder}
+                                value={this.state.chkTodaElArea}  />
+                            <label className="custom-control-label" htmlFor="customCheck1">Toda el área</label>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div className={"row "+ (this.state.colaboradersSelected.length> 0 ? "" : "d-none")}>
+                        <div className="col">
+                            <h4>Colaboradores seleccionados: </h4>
+                            <ul className="list-group p-2">
+                                {this.state.colaboradersSelected.map((colaborador, index)=> {
+                                    return (
+                                        <li key={index} className="list-group-item list-group-item-secondary d-flex">
+                                            <div className="flex-fill">
+        
+                                                <span className="font-weight-bold">
+                                                    {colaborador.IdColaborador} -
+                                                </span>
+                                                {colaborador.nombreColaborador} 
+                                            </div>
+                                            <div>
+                                                <button 
+                                                    className="btn btn-danger "
+                                                    onClick={()=> this.RemoverFromListService(colaborador.IdColaborador)}>
+                                                    Remover
+                                                </button>
+                                            </div>
+                                        </li>
+                                    )
+                                })}
+                             
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className={"row mb-4 " + (this.state.chkTodaElArea ? "d-none" : "")} style={{maxHeight: '400px', overflow: 'auto'}}>
+                        <div className="col">
+                            <h4>Colaboradores: </h4>
+                            <table className="table table-striped table-hover  bg-white ">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            Nombre
+                                        </th>
+                                        <th>
+                                            Acciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    {this.state.colaboradores.map((colaborador, index)=>{
+                                        return (
+                                            <tr key={index}>
+                                                <th>
+                                                    {colaborador.IdColaborador}
+                                                </th>
+                                                <td>
+                                                    {colaborador.Nombre}
+                                                    {colaborador.Accion==="S" ? (<span className="badge badge-warning m-1">Reasignado</span>) : null }
+                                                    {colaborador.Accion==="R" ? (<span className="badge badge-secondary m-1">Removido</span>) : null }
+                                                    {colaborador.Completo ? (<i className="fa fa-check-circle text-success m-1 p-1" aria-hidden="true"></i>) : null }                                       
+                                                        
+
+                                                </td>
+                                                <td>
+                                                    <button 
+                                                        className=" btn btn-outline-primary m-1" 
+                                                        data-toggle="tooltip" 
+                                                        data-placement="top" title="Seleccionar"
+                                                        onClick={ () => this.SelectUser(colaborador.IdColaborador, colaborador.Nombre)} >
+                                                            <i className="fa fa-check-square-o" aria-hidden="true"></i>
+                                                            <span className="m-1">
+                                                                Seleccionar
+                                                            </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                <div className="row">
+                    <div className="col-12 col-md-8 offset-md-2">
+
+                        <div className="alert alert-info alert-dismissible fade show" role="alert">
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <strong>Instrucciones:</strong> Crea las métricas con su respectivo porcentaje de evaluación con las cuales mediras a tu equipo, la sumatoria de dichas métrias debe ser 100%
                         </div>
 
                     </div>
@@ -482,101 +600,10 @@ class NuevEvaluacionArea extends Component {
         
 
 
-                    <div className="row m-3">
-                        <div className="col-12 col-md-6 offset-md-3 text-center">
-                            <div className="custom-control custom-checkbox">
-                                <input 
-                                    type="checkbox" 
-                                    className="custom-control-input" 
-                                    id="customCheck1"
-                                    // disabled
-                                    checked={this.state.chkTodaElArea}
-                                    onChange={this.chkTodaElAreaHanlder}
-                                    value={this.state.chkTodaElArea}  />
-                                <label className="custom-control-label" htmlFor="customCheck1">Toda el área</label>
-                            </div>
 
-                        </div>
-                    </div>
-
-                    <div className={"row "+ (this.state.colaboradersSelected.length> 0 ? "" : "d-none")}>
-                        <div className="col">
-                            <h3>Colaboradores seleccionados: </h3>
-                            <ul className="list-group p-2">
-                                {this.state.colaboradersSelected.map((colaborador, index)=> {
-                                    return (
-                                        <li key={index} className="list-group-item list-group-item-secondary d-flex">
-                                            <div className="flex-fill">
-        
-                                                <span className="font-weight-bold">
-                                                    {colaborador.IdColaborador} -
-                                                </span>
-                                                {colaborador.nombreColaborador} 
-                                            </div>
-                                            <div>
-                                                <button 
-                                                    className="btn btn-danger "
-                                                    onClick={()=> this.RemoverFromListService(colaborador.IdColaborador)}>
-                                                    Remover
-                                                </button>
-                                            </div>
-                                        </li>
-                                    )
-                                })}
-                             
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className={"row " + (this.state.chkTodaElArea ? "d-none" : "")}>
-                        <div className="col">
-                            <table className="table table-striped table-hover  bg-white ">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Código
-                                        </th>
-                                        <th>
-                                            Nombre
-                                        </th>
-                                        <th>
-                                            Acciones
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                    {this.state.colaboradores.map((colaborador, index)=>{
-                                        return (
-                                            <tr key={index}>
-                                                <th>
-                                                    {colaborador.IdColaborador}
-                                                </th>
-                                                <td>
-                                                    {colaborador.Nombre}
-                                                    {colaborador.Accion==="S" ? (<span className="badge badge-warning m-1">Reasignado</span>) : null }
-                                                    {colaborador.Accion==="R" ? (<span className="badge badge-secondary m-1">Removido</span>) : null }
-                                                    {colaborador.Completo ? (<i className="fa fa-check-circle text-success m-1 p-1" aria-hidden="true"></i>) : null }                                       
-                                                        
-
-                                                </td>
-                                                <td>
-                                                    <button 
-                                                        className=" btn btn-outline-primary m-1" 
-                                                        data-toggle="tooltip" 
-                                                        data-placement="top" title="Seleccionar"
-                                                        onClick={ () => this.SelectUser(colaborador.IdColaborador, colaborador.Nombre)} >
-                                                            <i className="fa fa-check-square-o" aria-hidden="true"></i>
-                                                            <span className="m-1">
-                                                                Seleccionar
-                                                            </span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })}
-                                </tbody>
-                            </table>
+                    <div className="row">
+                        <div className="col text-center">
+                            <Loading Cargando={this.state.cargando} ></Loading>
                         </div>
                     </div>
 
@@ -584,6 +611,7 @@ class NuevEvaluacionArea extends Component {
                         <div className="col text-center">
                             <button 
                                 type="button" 
+                                disabled={this.state.cargando}
                                 className="btn btn-success"
                                 onClick={this.CrearNuevaEvaluacion}>
                                     <i className="fa fa-floppy-o" aria-hidden="true"></i>

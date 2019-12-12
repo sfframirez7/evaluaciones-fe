@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import {Route} from 'react-router'
 
 import TituloPrincipal from '../../common/TituloPrincipal';
-import Reporte1 from './Reporte1';
 import MenuReportes from './MenuReportes';
 import PendientesDeEvaluacion from './PendientesDeEvaluacion';
-import ReporteGeneral from './ReporteGeneral';
+import RptResumenGeneral from './RptResumenGeneral';
 import ReporteHistoricoDeNotas from './ReporteHistoricoDeNotas';
+import ReporteCompetenciasConductuales from './ReporteCompetenciasConductuales';
+import ReporteGeneral from './ReporteGeneral';
 
 class Reportes extends Component {
 
@@ -25,9 +26,10 @@ class Reportes extends Component {
 
 
                     <Route exact path={`${this.props.match.path}`} component={MenuReportes} />
-                    <Route path={`${this.props.match.path}/one`} component={Reporte1} />
-                    <Route path={`${this.props.match.path}/pendientesDeEvaluacion`} component={PendientesDeEvaluacion} />
                     <Route path={`${this.props.match.path}/reporteGeneral`} component={ReporteGeneral} />
+                    <Route path={`${this.props.match.path}/compentenciasConductuales`} component={ReporteCompetenciasConductuales} />
+                    <Route path={`${this.props.match.path}/pendientesDeEvaluacion`} component={PendientesDeEvaluacion} />
+                    <Route path={`${this.props.match.path}/resumenGeneral`} component={RptResumenGeneral} />
                     <Route path={`${this.props.match.path}/reporteHistoricoNotas`} component={ReporteHistoricoDeNotas} />
 
             </div>

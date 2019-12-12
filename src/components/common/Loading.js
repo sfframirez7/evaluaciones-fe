@@ -19,8 +19,13 @@ class Loading extends React.Component {
 
         if (this.state.Cargando) {
             return (
-                <div className="spinner-grow text-warning" role="status">
-                    <span className="sr-only">Loading...</span>
+                <div>
+                    <div className="spinner-grow text-warning" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-muted">Cargando...</p>
+                    </div>
                 </div>
             )
         } else {

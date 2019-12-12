@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Stepper from 'bs-stepper'
 
-import {LoadJsonService} from '../../../services/EvaluacionesService'
 import {axios} from '../../../config/config'
 import Swal from "sweetalert2";
 
@@ -11,6 +10,8 @@ import Loading from '../../common/Loading'
 import EvaluacionGeneral from './EvaluacionGeneral';
 import EvaluacionPorMetas from './EvaluacionPorMetas';
 import ColaboradorSelected from '../colaboradores/ColaboradorSelected';
+import { VerResumenService } from '../../../services/ResultadosService';
+import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado';
 
 
 class Evaluacion extends Component {
@@ -19,35 +20,24 @@ class Evaluacion extends Component {
     constructor(props) {
         super(props);
 
-        var colaboradorId = ""
-        var evaluacionId = ""
-
-        try {
-            const { match: { params } } = this.props;
-            var dataBase64 = params.data    
-            var evaluacionBase64 = params.data2    
-            if(dataBase64)
-             colaboradorId = atob(dataBase64)
-            if(evaluacionBase64)
-                evaluacionId = atob(evaluacionBase64)
-            } catch (error) {
-                
-            }
-
 
         this.state = {
           name: 'React',
           evaluaciones : [],
           evaluaciones2 : [],
           evaluacionPorMeta: null,
-          colaboradorId : colaboradorId,
-          evaluacionId : evaluacionId,
-          HabilitarEvaluacionGeneral : false
+        //   colaboradorId : colaboradorId,
+        // evaluacionId : evaluacionId,
+        evaluacionId : 0,
+          colaboradorId : 0,
+          HabilitarEvaluacionGeneral : false,
+          EsEldueno : false
         };
 
         this.ObtenerEvaluacion = this.ObtenerEvaluacion.bind(this)
         this.ObtenerEvaluacionPorMeta = this.ObtenerEvaluacionPorMeta.bind(this)
         this.MostrarAyuda = this.MostrarAyuda.bind(this)
+        this.VerResumen = this.VerResumen.bind(this)
 
       }
     
@@ -59,8 +49,6 @@ class Evaluacion extends Component {
             animation: true
           })
 
-        var data = LoadJsonService()
-        this.setState({evaluaciones : data})
         this.ObtenerEvaluacionPorMeta()
         this.ObtenerEvaluacion()
 
@@ -70,18 +58,16 @@ class Evaluacion extends Component {
       ObtenerEvaluacion()
       {
         this.setState({cargando:true})
-        var evaluacionId = this.state.evaluacionId
+        var evaluacionId = this.props.evaluacionSelected.evluacionId
 
-        if(evaluacionId===0)
+        if(evaluacionId===0 || this.props.colaboradorSelected.colaboradorId  === 0)
         {
             this.props.history.push("/")
         }
 
-        axios.get('/GetEvaluacionPorColaborador/'+this.state.colaboradorId+'/'+evaluacionId)
+        axios.get('/GetEvaluacionPorColaborador/'+this.props.colaboradorSelected.colaboradorId+'/'+evaluacionId)
             .then(res => {
-                console.log(res.data)
                 this.setState({evaluaciones2 : res.data, cargando : false})
-                
             }).catch((error) => {
                 console.log(error)
                 Swal.fire({
@@ -97,14 +83,14 @@ class Evaluacion extends Component {
     ObtenerEvaluacionPorMeta()
       {
         this.setState({cargando:true})
-        var evaluacionId = this.state.evaluacionId
+        var evaluacionId = this.props.evaluacionSelected.evluacionId
 
-        if(evaluacionId===0)
+        if(evaluacionId===0 || this.props.colaboradorSelected.colaboradorId === 0)
         {
             this.props.history.push("/")
         }
 
-        axios.get('/GetEvaluacionMetaPorColaborador/'+this.state.colaboradorId+'/'+evaluacionId)
+        axios.get('/GetEvaluacionMetaPorColaborador/'+this.props.colaboradorSelected.colaboradorId+'/'+evaluacionId)
             .then(res => {
                 // console.log(res.data)
                 this.setState({evaluacionPorMeta : res.data, cargando : false})
@@ -116,8 +102,6 @@ class Evaluacion extends Component {
                 {
                     this.setState({HabilitarEvaluacionGeneral:true})
                 }
-
-                
                 
             }).catch((error) => {
                 console.log(error)
@@ -143,6 +127,12 @@ class Evaluacion extends Component {
     }
 
 
+    VerResumen()
+    {
+        VerResumenService()
+        this.props.history.push("/resumenEvaluaciones")
+    }
+
 
     render() {
         return (
@@ -165,6 +155,18 @@ class Evaluacion extends Component {
                     <div className="row">
                         <div className="col-12 col-md-10 offset-1">
                             <ColaboradorSelected></ColaboradorSelected>
+                        </div>
+                    </div>
+
+                    <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "" : "d-none")} >
+                        <div className="col text-center">
+                            <button 
+                                className=" btn btn-primary m-1" 
+                                data-toggle="tooltip" 
+                                data-placement="top" title="Ingresar resultados" 
+                                onClick={()=> this.VerResumen()}>
+                                Ver Resumen
+                            </button>
                         </div>
                     </div>
 
@@ -206,8 +208,8 @@ class Evaluacion extends Component {
                                                 {this.state.evaluacionPorMeta ? (
                                                     <EvaluacionPorMetas 
                                                         Evaluacion={this.state.evaluacionPorMeta} 
-                                                        ColaboradorId={this.state.colaboradorId} 
-                                                        IdPadre={this.state.evaluacionId} >
+                                                        ColaboradorId={this.props.colaboradorSelected.colaboradorId} 
+                                                        IdPadre={this.props.evaluacionSelected.evluacionId} >
                                                         
                                                     </EvaluacionPorMetas>
 

@@ -1,9 +1,9 @@
 const intialState = []
 
-const EstadosBrujula = (state = intialState, action) => {
+const GradosReducer = (state = intialState, action) => {
 
     switch (action.type) {
-        case 'LOAD_ESTADOS_BRUJULA':
+        case 'LOAD_AREAS':
             return action.data;
         default:
             return state;
@@ -12,4 +12,4 @@ const EstadosBrujula = (state = intialState, action) => {
 }
 
 
-export default EstadosBrujula;
+export default GradosReducer;

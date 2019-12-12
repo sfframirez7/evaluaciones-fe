@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Moment from 'react-moment';
+
 import {Link} from 'react-router-dom'
 import Stepper from 'bs-stepper'
 
 import Loading from '../../common/Loading';
+import {IsNumber} from '../../../services/IsNumber'
 
-import {ObtenerResultadosService} from '../../../services/ResultadosService'
-import {ObtenerSubAreas, ObtenerColaboradoresPorArea} from '../../../services/SubAreasService'
-
-import {ColaboradorModel} from '../../../Models/ColaboradorModel'
-import BtnPDF from '../../common/BtnPDF';
-import UsuarioLogueado from '../../common/UsuarioLogueado';
+import {ObtenerReporteGeneralService} from '../../../services/ColaboradoresService'
+import {ObtenerTodasEvaluacionesAnualesService} from '../../../services/EvaluacionesService'
+import {ObtenerSubAreas} from '../../../services/SubAreasService'
+import BtnExportToExcel from '../../common/BtnExportToExcel';
+import NoData from '../../common/NoData';
 
 class ReporteGeneral extends Component {
 
-    
     constructor(props) {
         super(props);
 
@@ -25,19 +26,13 @@ class ReporteGeneral extends Component {
             colaboradoresLoaded : [],
             evaluaciones : [],
             IdSubArea : 0,
-            txtBuscar : "",
-            IdEvaluacionanual :0,
-            IdColaborador : 0,
-            ReporteGeneral : {
-                Colaborador : ColaboradorModel,
-                Resultados : []
-            }
+            txtBuscar : ""
         }
 
-
+        this.ObtenerColaboradorespendientes = this.ObtenerColaboradorespendientes.bind(this)
+        this.ObtenerEvaluacioneAnuales = this.ObtenerEvaluacioneAnuales.bind(this)
+        this.FiltarColaboradores = this.FiltarColaboradores.bind(this)
         this.AreaChangedHandler = this.AreaChangedHandler.bind(this)
-        this.ObtenerResultados = this.ObtenerResultados.bind(this)
-        this.SeleccionarColaborador = this.SeleccionarColaborador.bind(this)
         
     }
 
@@ -48,273 +43,280 @@ class ReporteGeneral extends Component {
             linear: false,
             animation: true,
           })
-
+          this.ObtenerEvaluacioneAnuales()
           ObtenerSubAreas()
 
     }
 
-
-
-    
-    SeleccionarColaborador(idColaborador)
+    ObtenerEvaluacioneAnuales()
     {
-        this.setState({IdColaborador : idColaborador})
-        this.ObtenerResultados(idColaborador)
-        this.stepper.next()
-    }
+        this.setState({ cargando : true})
 
-
-    ObtenerResultados(idColaborador)
-    {
-        ObtenerResultadosService(idColaborador)
+        ObtenerTodasEvaluacionesAnualesService()
         .then((res) => {
-            console.log(res.data)
-            this.setState({ReporteGeneral : res.data})
+            this.setState({evaluaciones : res.data, cargando : false})
         }).catch((err) => {
-            
+            this.setState({ cargando : false})
         });
     }
-  
-    
+
+
+    ObtenerColaboradorespendientes(idEvaluacionAnual)
+    {
+
+        this.setState({ cargando : true})
+
+        ObtenerReporteGeneralService(idEvaluacionAnual)
+        .then((res) => {
+            this.setState({colaboradores : res.data, colaboradoresLoaded : res.data, cargando : false})
+            this.stepper.next()
+        }).catch((err) => {
+            this.setState({ cargando : false})
+        });
+
+    }
+
+   
+    FiltarColaboradores(event)
+    {
+        
+        this.setState({cargando: true})
+
+        var txtBuscar = event.target.value
+
+        var data = this.state.colaboradoresLoaded.filter((colaborador) => {
+
+            if(IsNumber(txtBuscar))
+            {
+
+                if (colaborador.IdColaborador.toString().indexOf(txtBuscar.toString())> -1)
+                    return true
+                else
+                    return ""   
+            }
+            else 
+            {
+                if (colaborador.NombreColaborador.toString().toLowerCase().indexOf(txtBuscar.toLowerCase()) > -1 )
+                    return true
+                else
+                    return ""
+                }
+            })
+
+            this.setState({ colaboradores: data })
+
+            this.setState({ cargando : false})
+    }
+
 
     AreaChangedHandler(event)
     {
         var IdSubArea = event.target.value
         this.setState({IdSubArea})
-        ObtenerColaboradoresPorArea(IdSubArea)
     }
-
-
 
     render() {
         return (
-            <div>
-
-            <nav aria-label="breadcrumb bg-white d-print-none">
-                <ol className="breadcrumb bg-white">
-                    <li className="breadcrumb-item">
-                        <Link to={{ pathname: '/reportes', }}>
-                            Reportes
-                        </Link>
-                    
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">Reporte general</li>
-                </ol>
-            </nav>
-
-
-            <h2>
-                Reporte general
-            </h2>
+          
+          <div>
+                  <nav aria-label="breadcrumb bg-white">
+                    <ol className="breadcrumb bg-white">
+                        <li className="breadcrumb-item">
+                            <Link to={{
+                                    pathname: '/reportes',
+                                    }}>
+                                    Reportes
+                            </Link>
+                        
+                        </li>
+                        <li className="breadcrumb-item active" aria-current="page">Reporte General</li>
+                    </ol>
+                </nav>
 
 
-            <div className="row">
-                <div className="col text-center">
-                    <Loading Cargando={this.state.cargando} ></Loading>
+                <h4 className="font-weight-bold">
+                    Reporte General
+                </h4>
+              
+                <div className="row">
+                    <div className="col text-center">
+                        <Loading Cargando={this.state.cargando} ></Loading>
+                    </div>
                 </div>
-            </div>
 
-            <div className="row">
-                    <div className="col-12">
 
-                        <div style={{overflowX:'auto'}}>
+
+                <div className="row">
+                    <div className="col">
+
+                        <div>
                             <div id="stepper1" className="bs-stepper">
                                 <div className="bs-stepper-header">
-                                    
-                                    <div className="step d-print-none"  data-target="#test-l-1">
-                                        <button 
-                                            className={"step-trigger" }>
+                                    <div className="step" data-target="#test-l-1">
+                                        <button className="step-trigger">
                                             <span className="bs-stepper-circle">1</span>
-                                            <span className="bs-stepper-label">Colaboradores</span>
+                                            <span className="bs-stepper-label">Seleccionar evaluación</span>
                                         </button>
                                     </div>
                                     <div className="line"></div>
-                                    <div className="step d-print-none"  data-target="#test-l-2">
+                                    <div className="step"  data-target="#test-l-2">
                                         <button 
                                             disabled
                                             className={"step-trigger" }>
                                             <span className="bs-stepper-circle">2</span>
-                                            <span className="bs-stepper-label">Reporte General</span>
+                                            <span className="bs-stepper-label">Reporte</span>
                                         </button>
                                     </div>
                                 </div>
                                 <div className="bs-stepper-content">
                                         <div id="test-l-1" className="content">
-                                        <div className="row my-2">
-                                                    <div className="col-12  text-center">
-                                                    <h4 className="card-title font-weight-bold">Área:</h4>
-                                                        <select 
-                                                            value={this.state.IdSubArea} 
-                                                            className="custom-select col-12 col-md-4 form-control" 
-                                                            id="cmbSubAreas" 
-                                                            onChange={ this.AreaChangedHandler }>
-                                                            <option value="0" >Seleccionar Área</option>
-                                                            { this.props.subAreas.map((subArea, index) => <option key={index} value={subArea.IdSubArea}>{subArea.SubArea}</option>) }
-                                                        </select>                  
-                                                    </div>
-                                                </div>      
-                                                
-                                                <div className="row">
-                                                    <div className="col-12 col-md-10 offset-md-1">
+                                            <div className="row">
+                                                <div className="col">
+
+                                                    <div style={{overflowX: 'auto'}}>
                                                         
-                                                        <div style={{overflowX: 'auto'}}>
-                                                                                                    
-                                                            <table className="table table-striped table-hover  bg-white" >
+                                                        <h3 className="font-weight-bold">Seleccionar evaluación</h3>
+
+
+                                                        <table className="table table-striped table-hover  bg-white" >
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>
-                                                                            Código
-                                                                        </th>
-                                                                        <th>
-                                                                            Nombre
-                                                                        </th>
-                                                                        <th>
-                                                                            Acciones
-                                                                        </th>
+                                                                        <th>Título</th>
+                                                                        <th>Descripción</th>
+                                                                        <th>Desde</th>
+                                                                        <th>Hasta</th>
+                                                                        <th>Acciones</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                
-                                                                    {this.props.colaboradores.map((colaborador, index)=>{
+                                                                    
+                                                                    {this.state.evaluaciones.map((evaluacion, index)=> {
+                                                                        return (
+                                                                            <tr key={index}>
+                                                                                <td>
+                                                                                    {evaluacion.Titulo}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {evaluacion.Descripcion}
+                                                                                </td>
+                                                                                <td>
+                                                                                    <Moment format="YYYY/MM/DD">{evaluacion.Desde}</Moment>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <Moment format="YYYY/MM/DD">{evaluacion.Hasta}</Moment>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <button className="btn btn-outline-primary" onClick={() => this.ObtenerColaboradorespendientes(evaluacion.IdEvaluacionAnual)}>Ver</button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        )
+                                                                    })}
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        <div id="test-l-2" className="content">
+                                                
+                                                <div className="row my-2">
+                                                    
+                                                    <div className="col-12 col-md-4 offset-md-4 text-center">
+
+                                                        <h4 className="card-title font-weight-bold">Buscar:</h4>                
+                                                        <input 
+                                                            className="form-control form-control-md " 
+                                                            type="text" 
+                                                            onChange={this.FiltarColaboradores}
+                                                            placeholder="Nombre ó código" />  
+
+                                                    </div>
+
+                                                    <div className="col">
+                                                        <div className="d-flex flex-wrap align-content-center">
+                                                            <h5>Total: <span className="badge badge-secondary">{this.state.colaboradores.length}</span></h5>
+                                                        </div>
+                                                    </div>
+
+                                                   
+                                                </div>      
+
+                                                <div className="row">
+                                                    <div className="col text-right">
+                                                        <BtnExportToExcel 
+                                                            TableSelector="#tbtColaboradoresPendientes"
+                                                            FileName={"TablaColaboradorePendientes"+new Date().getTime()+".csv"}>
+                                                        </BtnExportToExcel>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div className="row">
+                                                    <div className="col">
+
+                                                        <div style={{overflowX:'auto'}}>
+
+                                                            <table id="tbtColaboradoresPendientes" 
+                                                                    className="table table-striped table-hover  bg-white" style={{overflowX: 'auto'}}>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Código</th>
+                                                                        <th>Nombre</th>
+                                                                        <th>Área</th>
+                                                                        <th>Puesto</th>
+                                                                        <th>Jefe</th>
+                                                                        <th>%60</th>
+                                                                        <th>%40</th>
+                                                                        <th>%Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    
+                                                                    {this.state.colaboradores.map((colaborador, index)=> {
                                                                         return (
                                                                             <tr key={index}>
                                                                                 <th>
                                                                                     {colaborador.IdColaborador}
                                                                                 </th>
                                                                                 <td>
-                                                                                    {colaborador.Nombre}
-                                                                                    {colaborador.Accion==="S" ? (<span className="badge badge-warning m-1">Reasignado</span>) : null }
-                                                                                    {colaborador.Accion==="R" ? (<span className="badge badge-secondary m-1">Removido</span>) : null }
-                                                                                    {colaborador.Completo ? (<i className="fa fa-check-circle text-success m-1 p-1" aria-hidden="true"></i>) : null }                                       
-                                                                                        
+                                                                                    {colaborador.NombreColaborador}
                                                                                 </td>
                                                                                 <td>
-                                                                                    <button 
-                                                                                        className="btn btn-outline-primary"
-                                                                                        onClick={() => this.SeleccionarColaborador(colaborador.IdColaborador)}>
-                                                                                        Ver
-                                                                                    </button>
+                                                                                    {colaborador.Area}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {colaborador.Cargo}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {colaborador.NombreJefeImmediato}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {colaborador.Valor60}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {colaborador.Valor40}
+                                                                                </td>
+                                                                                <td>
+                                                                                    { parseFloat(parseFloat(colaborador.Valor60)+ parseFloat(colaborador.Valor40))}
                                                                                 </td>
                                                                             </tr>
                                                                         )
                                                                     })}
+
                                                                 </tbody>
                                                             </table>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                           
-                                            
-                                        </div>
-                                      
-                                        <div id="test-l-2" className="content">
-
-                                            <div className="row">
-                                                <div className="col text-right">
-                                                    <BtnPDF></BtnPDF>
-                                                </div>
-                                            </div>
-
-                                            <div className="row d-none d-print-inline">
-                                                <div className="col">
-                                                    Printed by: <UsuarioLogueado></UsuarioLogueado>
-                                                </div>
-                                            </div>
-
-
-                                            <div className="row">
-                                                <div className="col">
-
-                                                    <div className="card">
-                                                        <h3 className="card-header">Resultados</h3>
-                                                        <div className="card-body">
-                                                            <div className="row p-1">
-                                                                <div className="col-12 col-md-6">
-                                                                    <div className="d-inline">
-                                                                        <h5 className="d-inline">Código: </h5>
-                                                                        <h6 className="d-inline">{this.state.ReporteGeneral.Colaborador.IdColaborador}</h6>        
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-12 col-md-6">
-                                                                    <div className="d-inline">
-                                                                        <h5 className="d-inline">Nombre: </h5>
-                                                                        <h6 className="d-inline">{this.state.ReporteGeneral.Colaborador.NombreColaborador}</h6>        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="row p-2">
-                                                                <div className="col-12 col-md-6">
-                                                                    <div className="d-inline">
-                                                                        <h5 className="d-inline">Área: </h5>
-                                                                        <h6 className="d-inline">{this.state.ReporteGeneral.Colaborador.Area}</h6>        
-                                                                    </div>
-   
-                                                                </div>
-                                                                <div className="col-12 col-md-6">
-                                                                    <div className="d-inline">
-                                                                        <h5 className="d-inline">Puesto: </h5>
-                                                                        <h6 className="d-inline">{this.state.ReporteGeneral.Colaborador.Cargo}</h6>        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="row p-2">
-                                                                <div className="col-12 col-md-6">
-                                                                    <div className="d-inline">
-                                                                        <h5 className="d-inline">Jefe inmediato: </h5>
-                                                                        <h6 className="d-inline">{this.state.ReporteGeneral.Colaborador.NombreJefeImmediato}</h6>        
-                                                                    </div>   
-                                                                </div>
-                                                             
-                                                            </div>
-
-
-                                                            <div className="row">
-                                                                <div className="col-12 col-md-8 offset-md-2">
-                                                                    <div style={{overflowX: 'auto'}}>
-
-                                                                    
-                                                                        <table className="table table-striped table-bordered table-hover bg-white" style={{overflowX: 'auto'}}>
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Período</th>
-                                                                                    <th>% Cumplimiento de competencias </th>
-                                                                                    <th>% Evaluación de Metas</th>
-                                                                                    <th>% Desempeño Global</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                        
-                                                                                {this.state.ReporteGeneral.Resultados.map((resultado, index)=> {
-                                                                                    return (
-                                                                                        <tr key={index}>
-                                                                                            <td>
-                                                                                                {resultado.Anio}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                {resultado.CumplimientoEnBaseA60 +"%"}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                {resultado.CumplimientoEnBaseA40 +"%"}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                {parseFloat(resultado.CumplimientoEnBaseA60) + parseFloat(resultado.CumplimientoEnBaseA40) + "%"}
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    )
-                                                                                })}
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-                                            </div>
+
+                                                <div className="row">
+                                                    <div className="col text-center">
+                                                        <NoData NoData={this.state.colaboradores.length === 0 && !this.state.cargando}/>
+                                                    </div>
+                                                </div>
                                         </div>
                                 </div>
                             </div>
@@ -322,16 +324,14 @@ class ReporteGeneral extends Component {
 
                     </div>
                 </div>
-
-        </div>
+                
+            </div>
         );
     }
 }
 
-
 function mapStateToProps(state) {
     return {
-        colaboradores : state.ColaboradoresReducer ,
         subAreas : state.SubAreasReducer,
     };
 }

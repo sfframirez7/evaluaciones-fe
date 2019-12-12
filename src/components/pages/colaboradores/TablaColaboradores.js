@@ -43,8 +43,6 @@ class TablaColaboradores extends Component {
             colaboradorId: colaboradorId
         }
 
-        console.log(colaborador)
-
         this.props.dispatch({type:'SELECT_COLABORADOR', data: colaborador}) 
         this.props.history.push("/evaluacion/"+btoa(colaboradorId)+"/"+btoa(this.props.evaluacionSelected.evluacionId))
     }

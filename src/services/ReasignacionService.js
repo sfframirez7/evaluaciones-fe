@@ -1,6 +1,4 @@
 import { axios, store, JwtPayload } from '../config/config'
-import Swal from "sweetalert2";
-
 
 
 export const ObtenerReasignaciones = () => {
@@ -18,45 +16,15 @@ export const NuevaReasignacionService = (asignacion) => {
 
     var user = JwtPayload().usuario
     var usuario = user.IdColaborador
-    asignacion.IdUsuarioModifico = usuario
+    asignacion.IdUsuarioModifico = usuario.toString()
 
     return axios.post('/NewReasignacion', asignacion)
-        .then(res => {
-            store.dispatch({ type: 'LOAD_COLABORADORES', data: [] })
-            Swal.fire({
-                title: 'Información guardada exitosamente',
-                icon: 'success',
-                text: "Éxito",
-            });
-
-            ObtenerReasignaciones()
-            RemoverFromListService()
-
-        }).catch((error) => {
-            console.log(error)
-        })
-
-
 }
 
 
 
-export const RemoverReasignacion = (IdAginacion) => {
+export const RemoverReasignacionService = (IdAginacion) => {
     return axios.get('/deleteReasignacion/' + IdAginacion)
-        .then(res => {
-
-            Swal.fire({
-                title: 'Información guardada exitosamente',
-                icon: 'success',
-                text: "Éxito",
-            });
-
-            ObtenerReasignaciones()
-
-        }).catch((error) => {
-            console.log(error)
-            this.setState({ cargando: false });
-        })
 
 }
 
@@ -71,13 +39,5 @@ export const RemoverFromListService = () => {
 }
 
 export const FilterReasignacionService = (txtBuscar) => {
-
-    console.log(txtBuscar)
-        // var colaborador = {
-        //     nombreColaborador: "",
-        //     colaboradorId: 0
-        // }
-
-
     store.dispatch({ type: 'REASIGNACIONES_FILTER', data: { txtBuscar } })
 }

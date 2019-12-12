@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TituloPrincipal from '../../common/TituloPrincipal';
 
-
+import {Route} from 'react-router'
+import MenuMantenimientos from './MenuMantenimientos';
+import PerfilColaboradores from './PerfilColaboradores';
+import NuevaEvaluacion from './NuevaEvaluacion';
+import Reasignaciones from '../reasignaciones/Reasignaciones';
+import CargoGrado from './CargoGrado';
+import MantenimientoColaboradores from './MantenimientoColaboradores';
+import NuevoColaborador from '../colaboradores/NuevoColaborador';
+import MantenimientoCargos from './MantenimientoCargos';
+import NuevoCargo from '../cargos/NuevoCargo';
+import MantenimientoEvaluaciones from './MantenimientoEvaluaciones';
+import MantenimientoUsuarios from './MantenimientoUsuarios';
+import NuevoUsuario from './NuevoUsuario';
 
 
 
 class Mantenimientos extends Component {
+
+
     render() {
         return (
             <div>
                 <div className="container">
-
 
                     <div className="row">
                         <div className="col">
@@ -20,130 +33,19 @@ class Mantenimientos extends Component {
                     </div>
 
 
-
-                    <div className="row">
-                        <div className="col-12 col-md-8 offset-md-2">
-                            <div className="list-group">
-                                
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" className="list-group-item list-group-item-action flex-row align-items-start">
-                                    <div className="row">
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
-                                        </div>
-                                        <div className="col">
-                                            <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">List group item heading</h5>
-                                            </div>
-                                            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                        </div>
-                                        <div className="col-1 d-flex align-items-center">
-                                            <i className="fa fa-arrow-right fa-2x text-primary" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                               
-                            </div>  
-
-                        </div>
-                    </div>
-
-
+                    <Route exact path={`${this.props.match.path}`} component={MenuMantenimientos} />
+                    <Route path={`${this.props.match.path}/evaluaciones`} component={MantenimientoEvaluaciones} />
+                    <Route path={`${this.props.match.path}/nuevaEvaluacion`} component={NuevaEvaluacion} />
+                    <Route path={`${this.props.match.path}/colaboradores`} component={MantenimientoColaboradores} />
+                    <Route path={`${this.props.match.path}/nuevoColaborador`} component={NuevoColaborador} />
+                    <Route path={`${this.props.match.path}/usuarios`} component={MantenimientoUsuarios} />
+                    <Route path={`${this.props.match.path}/nuevoUsuario`} component={NuevoUsuario} />
+                    <Route path={`${this.props.match.path}/cargos`} component={MantenimientoCargos} />
+                    <Route path={`${this.props.match.path}/nuevoCargo`} component={NuevoCargo} />
+                    <Route path={`${this.props.match.path}/perfilColaboradores`} component={PerfilColaboradores} />
+                    <Route path={`${this.props.match.path}/cargoGrado`} component={CargoGrado} />
+                    <Route path={`${this.props.match.path}/reasignaciones`} component={Reasignaciones} />
+                    
                 </div>
             </div>
         );

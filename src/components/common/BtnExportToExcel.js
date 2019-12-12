@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loading from './Loading';
 
 function mapStateToProps(state) {
     return {
@@ -13,6 +14,7 @@ class BtnExportToExcel extends Component {
         super(props);
         
         this.state = {
+            cargando : false,
             FileName : this.props.FileName,
             Table : this.props.TableSelector
         }
@@ -50,6 +52,8 @@ class BtnExportToExcel extends Component {
 
     exportTableToCSV() {
         var csv = [];
+
+        this.setState({cargando : true})
         // var rows = document.querySelectorAll("#tbtColaboradoresPendientes tr");
         var rows = document.querySelectorAll(this.state.Table + " tr");
         
@@ -64,6 +68,7 @@ class BtnExportToExcel extends Component {
     
         // Download CSV file
         this.downloadCSV(csv.join("\n"), this.state.FileName );
+        this.setState({cargando : false})
     }
 
 
@@ -72,10 +77,14 @@ class BtnExportToExcel extends Component {
     render() {
         return (
             <div>
-                <button className="btn text-success d-print-none"
-                    onClick={this.exportTableToCSV} >
-                    <i className="fa fa-file-excel-o" aria-hidden="true" style={{fontSize: '1.6rem'}}></i>
-                </button> 
+                <div className="d-inline"> 
+
+                    <Loading  Cargando={this.state.cargando} className="d-inline"></Loading>
+                    <button className="btn text-success d-print-none d-inline"
+                        onClick={this.exportTableToCSV} >
+                        <i className="fa fa-file-excel-o" aria-hidden="true" style={{fontSize: '1.6rem'}}></i>
+                    </button> 
+                </div>
             </div>
         );
     }

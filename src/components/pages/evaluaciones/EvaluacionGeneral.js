@@ -6,6 +6,8 @@ import Loading from '../../common/Loading'
 import {EvaluacionCompletadaService} from '../../../services/EvaluacionesService'
 import {TipoPregunta} from '../../../Models/TipoPreguntasModel';
 import Swal from "sweetalert2";
+import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado'
+import {AceptarEvaluacionService} from '../../../services/EvaluacionesService'
 
 class EvaluacionGeneral extends Component {
 
@@ -20,14 +22,26 @@ class EvaluacionGeneral extends Component {
             colaboradorId: this.props.Evaluacion.IdColaborador,
             respuestasUnica : [],
             respuestasMultiples : [],
-            respuestasAbiertas : []
+            respuestasAbiertas : [],
+            EsElDueno: false,
+            MostrarBtnAceptarEvaluacion : false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.RespuestaUnicaHandlerChange = this.RespuestaUnicaHandlerChange.bind(this)
         this.ComentarioRespuestaUnicahandleChange = this.ComentarioRespuestaUnicahandleChange.bind(this)
         this.ValidateResponses = this.ValidateResponses.bind(this)
+        this.AceptarEvaluacion = this.AceptarEvaluacion.bind(this)
+
     }
+
+
+    componentDidMount()
+    {
+        if(EsElUsuarioLogueado(this.state.colaboradorId) && !this.state.evaluacion.AceptoEvaluacion)
+                this.setState({MostrarBtnAceptarEvaluacion : true})
+    }
+
 
     RespuestaUnicaHandlerChange(idPregunta, idRespuesta, IdRespuestaPorPregunta, Valor)
     {
@@ -72,10 +86,6 @@ class EvaluacionGeneral extends Component {
        
     }
 
-
-  
-
-   
     
     ComentarioRespuestaUnicahandleChange(event, idPregunta) {
 
@@ -121,7 +131,7 @@ class EvaluacionGeneral extends Component {
 
             this.state.evaluacion.EncabezadoPreguntas.map((seccion, index)=> {
                 return seccion.Preguntas.map((pregunta, index)=> {
-                    if(pregunta.IdTipoRespuesta === 1)
+                   if(pregunta.IdTipoRespuesta === 1)
                     {
                         var respuestasUnica = this.state.respuestasUnica
                         var respuestas = respuestasUnica.filter(function(value, index, arr){
@@ -133,7 +143,11 @@ class EvaluacionGeneral extends Component {
                             error = true
                             return true
                         }
+                        else 
+                            return false
                     }
+                    else 
+                        return false
                 })
             })
             return error
@@ -196,9 +210,74 @@ class EvaluacionGeneral extends Component {
       }
 
 
+      AceptarEvaluacion()
+      {
+        this.setState({cargando: true})
+
+        Swal.fire({
+            title: 'Al hacer click en el botón OK, aceptas el resultado de la evaluación',
+            text: "Aceptar evaluación",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.value) {
+                AceptarEvaluacionService(this.state.EvaluacionId)
+                .then((res) => {
+                    this.setState({cargando: false})
+                    Swal.fire({
+                        title: 'Información guardada exitosamente',
+                        icon: 'success',
+                        text: "Éxito",
+                    });
+                    window.history.back();
+                    
+                }).catch((err) => {
+                    this.setState({cargando: false})
+                    Swal.fire({
+                        title: 'No se ha podido actulizar la información. Por favor reintenta más tarde.',
+                        icon: 'error',
+                        text: "Error",
+                    });
+                });
+            }
+            else {
+                this.setState({cargando: false})
+            }
+          })
+
+      
+      }
+
     render() {
         return (
             <div>
+
+                <div className={"row " + (this.state.MostrarBtnAceptarEvaluacion ? "" : "d-none")}>
+                    <div className="col text-center">
+                        <button 
+                            className="btn btn-success"
+                            onClick={this.AceptarEvaluacion}>
+                            Confirmar evaluación
+                        </button>
+                    </div>
+                </div>
+
+                <div className={"row " +(!this.state.evaluacion.PermiteGuardar && !this.state.evaluacion.Completo ? "" : "d-none")}>
+                {/* <div className={"row " }> */}
+                    <div className="col-12 col-md-10 offset-md-1">
+                        <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <strong>!No disponible!</strong> La evaluación no está disponible para ser completada.
+                        </div>
+
+                    </div>
+                </div>
+
                  <div className="row p-2 mb-4">
                     <div className="col col-lg-8 offset-lg-2">
 
@@ -208,7 +287,7 @@ class EvaluacionGeneral extends Component {
                                 <hr/>
 
                                 <form onSubmit={this.handleSubmit} >
-                                {/* <fieldset disabled={ (this.state.evaluacion.Completo) ?  "disabled" : ""}> */}
+                                <fieldset disabled={ (this.state.evaluacion.PermiteGuardar) ?  "" : "disabled"}>
                                 {this.state.evaluacion.EncabezadoPreguntas.map((seccion, index)=>{
                                         return (
                                             <div key={index} className="">
@@ -216,7 +295,7 @@ class EvaluacionGeneral extends Component {
                                                     <div>
 
                                                         <span className="badge badge-info p-2 px-3 rounded-lg d-inline">
-                                                            Sección {index +1}
+                                                            {seccion.Descripcion + " - ("+ seccion.Nivel + " " +seccion.GradoPuesto+")"}
                                                         </span>
 
                                                         <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
@@ -235,7 +314,6 @@ class EvaluacionGeneral extends Component {
                                                        
                                                     <div>
                                                         {seccion.Preguntas.map((pregunta, index)=> {
-                                                            // {console.log(pregunta)}
                                                             return (
                                                                 <div key={index} className="">
 
@@ -303,8 +381,10 @@ class EvaluacionGeneral extends Component {
                                                     </fieldset>
                                             </div>
                                         )
+                                        
 
                                                 })}
+                                        </fieldset>
 
                                             <div className="row">
                                                 <div className="col text-center">
@@ -313,16 +393,18 @@ class EvaluacionGeneral extends Component {
                                             </div>
 
                                             <div className="col text-center">
-                                                <button
-                                                    type="submit"
-                                                    disabled={ (this.state.evaluacion.Completo || this.state.cargando)}
-                                                    // type="button"
-                                                    className="btn btn-success text-center"
-                                                    onClick={ () => this.handleSubmit()}>
-                                                        Guardar
+                                                {this.state.evaluacion.PermiteGuardar ? (
+                                                    <button
+                                                        type="submit"
+                                                        disabled={ (this.state.evaluacion.Completo || this.state.cargando )}
+                                                        className="btn btn-success text-center"
+                                                        onClick={ () => this.handleSubmit()}>
+                                                            Guardar
                                                     </button>
+                                                ) : (
+                                                    null
+                                                )}
                                             </div>
-                                            {/* </fieldset> */}
                                         </form>
 
 

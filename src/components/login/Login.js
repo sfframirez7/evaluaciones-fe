@@ -9,6 +9,7 @@ import axios from 'axios';
 import { JwtPayload } from "../../config/config";
 import {connect} from 'react-redux';
 import Swal from "sweetalert2";  
+import { ObtenerOpcionesDeMenu } from '../../services/MenuService';
 
 class Login extends React.Component {
 
@@ -43,7 +44,6 @@ class Login extends React.Component {
     }
 
     onEnterPress = (e) => {
-      console.log(e)
       if(e.keyCode === 13 && e.shiftKey === false) {
         e.preventDefault();
         this.SignIn()
@@ -70,28 +70,41 @@ class Login extends React.Component {
         
 
         var credenciales = {
-          codigoEmpleado : this.state.txtEmpleadoCodigo,
-          password : this.state.txtPassword
+          Usuario : this.state.txtEmpleadoCodigo.toString(),
+          password : this.state.txtPassword.toString()
         }
 
         var data = JSON.stringify(credenciales)
 
-        axios.post( UrlBase +'/login' , data   )
+        axios.post( UrlBase +'/loginAndGenerateToken' , data   )
         
         .then(res => {
-          this.setState(state => ({Cargando: false }));
+          
           if(res.data)
           {
             localStorage.setItem("usr_token", res.data)
-            var user = JwtPayload().usuario   
-            
-            var colaborador = {
-                nombreColaborador : user.EmpleadoNombre,
-                colaboradorId : user.Empleado
-            }
-            this.props.dispatch({type:'ACTUALIZAR_COLABORADOR', data: colaborador}) 
-            window.location.reload();
 
+
+            var user = JwtPayload().usuario   
+            ObtenerOpcionesDeMenu()
+            
+            .then((res) => {
+                localStorage.setItem("opciones_menu", JSON.stringify(res.data))
+                var colaborador = {
+                  nombreColaborador : user.EmpleadoNombre,
+                  colaboradorId : user.Empleado
+              }
+              this.props.dispatch({type:'ACTUALIZAR_COLABORADOR', data: colaborador}) 
+              this.setState( ({Cargando: false }));
+              window.location.reload();
+
+            }).catch((err) => {
+              console.log(err)
+              this.setState( ({Cargando: false }));
+            });
+          }
+          else {
+            this.setState( ({Cargando: false }));
           }
         }).catch((error) => 
         {
@@ -142,7 +155,7 @@ class Login extends React.Component {
               <div className="col-10 col-md-6 col-lg-4 mt-4 py-4 card-box bg-white" id="cardLogin" >
           
                   <h5 className="text-justify my-4">
-                    Inicia sesión con tu código de empleado y contraseña de 4DX
+                    Para esta aplicación se ha creado un nuevo usuario y una nueva contraseña
                   </h5>
                   
                   <label className="sr-only" htmlFor="txtUsuario">Usuario</label>

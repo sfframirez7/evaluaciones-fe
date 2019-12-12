@@ -5,6 +5,8 @@ import SubAreasReducer from './SubAreasReducer'
 import ColaboradorSelectedReducer from './ColaboradorSelectedReducer'
 import ReasignacionesLoadedReducer from './ReasignacionesLoadedReducer'
 import EvaluacionSelectedReducer from './EvaluacionSelectedReducer'
+import ReporteGeneralReducer from './ReporteGeneralReducer'
+import GradosReducer from './GradosReducer'
 
 
 export default combineReducers({
@@ -14,6 +16,8 @@ export default combineReducers({
     SubAreasReducer,
     ColaboradorSelectedReducer,
     ReasignacionesLoadedReducer,
-    EvaluacionSelectedReducer
+    EvaluacionSelectedReducer,
+    ReporteGeneralReducer,
+    GradosReducer
 
 })

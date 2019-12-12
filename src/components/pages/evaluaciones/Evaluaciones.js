@@ -34,6 +34,7 @@ class Evaluaciones extends Component {
         this.setState({cargando  : true})
         ObtenerEvaluacionesService()
         .then((res) => {
+            console.log(res.data)
             this.setState({evaluaciones : res.data, cargando : false})
         }).catch((err) => {
             this.setState({cargando  : true})
@@ -62,7 +63,7 @@ class Evaluaciones extends Component {
                     
                     <div className="row">
                         <div className="col">
-                            <TituloPrincipal Titulo="Evaluaciones"></TituloPrincipal>
+                            <TituloPrincipal Titulo="Evaluaciones equipo"></TituloPrincipal>
                         </div>
                     </div>
 
@@ -107,12 +108,12 @@ class Evaluaciones extends Component {
                                                         <h4 className="card-title font-weight-bold"> {evaluacion.Titulo}</h4>
                                                         <p className="card-text"> {evaluacion.Descripcion}</p>
                                                         <p className="mb-1">
-                                                            Creada por:  {evaluacion.NombreCreador} -  
+                                                            {/* Creada por:  {evaluacion.NombreCreador} -   */}
                                                             Fecha creación: <Moment format="YYYY/MM/DD">{evaluacion.FechaCreacion}</Moment>
                                                         </p>
                                                         <p className="mb-1 font-weight-bold">
-                                                            Disponible
-                                                            Desde:  <Moment format="YYYY/MM/DD">{evaluacion.Desde}</Moment> - 
+                                                            Disponible 
+                                                            Desde: <Moment format="YYYY/MM/DD">{evaluacion.Desde}</Moment> - 
                                                             Hasta: <Moment format="YYYY/MM/DD">{evaluacion.Hasta}</Moment>
                                                         </p>
                                                     </div>
