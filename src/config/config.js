@@ -7,10 +7,12 @@ import Reducer from '../reducer/Reducer'
 export const store = createStore(Reducer);
 
 /* Producción */
-//const UrlBase = "http://10.100.90.9:8088"
+//const UrlBase = "https://10.100.90.9:8088"
+//const UrlBase = "https://servicioevaluaciones.banpais.hn:8088"
 
 /* PRUEBAS */
-//const UrlBase = "http://10.100.203.46:8088"
+//const UrlBase = "https://10.100.203.46:8088"
+//const UrlBase = "https://servicioevaluacionespu.banpais.hn:8088"
 
 
 /* Desarrollo */
