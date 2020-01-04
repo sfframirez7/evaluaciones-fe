@@ -67,7 +67,14 @@ class Evaluacion extends Component {
 
         axios.get('/GetEvaluacionPorColaborador/'+this.props.colaboradorSelected.colaboradorId+'/'+evaluacionId)
             .then(res => {
-                this.setState({evaluaciones2 : res.data, cargando : false})
+                console.log(res.data)
+                if(res.data)
+                {
+                    this.setState({evaluaciones2 : res.data, cargando : false})
+                }
+                else {
+                    this.setState({evaluaciones2 : [], cargando : false})
+                }
             }).catch((error) => {
                 console.log(error)
                 Swal.fire({

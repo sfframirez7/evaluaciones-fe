@@ -356,6 +356,7 @@ class NuevEvaluacionArea extends Component {
                                 className="form-control" 
                                 type="text" 
                                 placeholder="Título..."
+                                maxlength="150"
                                 value={this.state.Titulo}
                                 onChange={this.TxtTituloHandler}/>
                         </div>
@@ -370,6 +371,7 @@ class NuevEvaluacionArea extends Component {
                                 className="form-control" 
                                 name="txtDescripcion" 
                                 id="txtDescripcion"  
+                                maxlength="250"
                                 rows={3} 
                                 placeholder="Descripción..." 
                                 value={this.state.Descripcion}

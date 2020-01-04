@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import NuevEvaluacionArea from './NuevEvaluacionArea';
 
 import Loading from '../../common/Loading'
+import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado'
 
-import {EvaluacionCompletadaService} from '../../../services/EvaluacionesService'
+import {EvaluacionCompletadaService, EliminarEvaluacionPorMetaService} from '../../../services/EvaluacionesService'
 import Swal from "sweetalert2";
 
 class EvaluacionPorMetas extends Component {
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             evaluacion : this.props.Evaluacion,
@@ -26,6 +26,7 @@ class EvaluacionPorMetas extends Component {
         this.RespuestaAbiertahandleChange = this.RespuestaAbiertahandleChange.bind(this)
         this.GuardarEvaluacionCompletada = this.GuardarEvaluacionCompletada.bind(this)
         this.ValidateResponses = this.ValidateResponses.bind(this)
+        this.EliminarEvaluacionPorMeta = this.EliminarEvaluacionPorMeta.bind(this)
         
     }
 
@@ -210,6 +211,42 @@ class EvaluacionPorMetas extends Component {
         })
     }
 
+    EliminarEvaluacionPorMeta()
+    {
+        Swal.fire({
+            title: 'Al eliminar esta meta, se borrarán los resultados de todos los colaboradores que se encuentren en ella. ESTA ACCIÓN NO SE PUEDE REVERTIR!',
+            text: "¿Eliminar evaluación?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '##3085d6',
+            confirmButtonText: 'Eliminar'
+          }).then((result) => {
+            if (result.value) {
+                EliminarEvaluacionPorMetaService(this.state.IdEvaluacionAnual)
+                .then((res) => {
+                    this.setState({cargando: false})
+                    Swal.fire({
+                        title: 'Información guardada exitosamente',
+                        icon: 'success',
+                        text: "Éxito",
+                    });
+                    window.history.back();
+                    
+                }).catch((err) => {
+                    this.setState({cargando: false})
+                    Swal.fire({
+                        title: 'No se ha podido actulizar la información. Por favor reintenta más tarde.',
+                        icon: 'error',
+                        text: "Error",
+                    });
+                });
+            }
+            else {
+                this.setState({cargando: false})
+            }
+          })
+    }
 
     render() {
         return (
@@ -243,6 +280,8 @@ class EvaluacionPorMetas extends Component {
                     </div>
                 </div>
 
+
+              
 
 
                 <div className="row p-2 mb-4">
@@ -348,11 +387,26 @@ class EvaluacionPorMetas extends Component {
 
 
                             </div>
+
+                            <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
+                                <div className="col text-center">
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-danger"
+                                        onClick={this.EliminarEvaluacionPorMeta}
+                                        >
+                                        
+                                        Eliminar Evaluación Por Meta</button>
+                                </div>
+                            </div>
                         </div>
 
 
                     </div>
                 </div>
+
+             
+                
 
 
             </div>
@@ -364,7 +418,7 @@ class EvaluacionPorMetas extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        colaboradorSelected : state.ColaboradorSelectedReducer
     };
 }
 

@@ -53,3 +53,9 @@ export const NuevaEvaluacionAnual = (evaluacion) => {
 
     return axios.post('/NuevaEvaluacionAnual',evaluacion )
 }
+
+
+export const EliminarEvaluacionPorMetaService = (IdEvaluacionPorMeta) => {
+
+    return axios.get('/EliminarEvaluacionPorMeta/'+IdEvaluacionPorMeta )
+}
