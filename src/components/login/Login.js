@@ -10,6 +10,7 @@ import { JwtPayload } from "../../config/config";
 import {connect} from 'react-redux';
 import Swal from "sweetalert2";  
 import { ObtenerOpcionesDeMenu } from '../../services/MenuService';
+import EsNavegadorCompatibleService from '../../services/EsNavegadorCompatibleService';
 
 class Login extends React.Component {
 
@@ -148,6 +149,8 @@ class Login extends React.Component {
       }
 
 
+
+
     render() {
 
         return (
@@ -202,11 +205,22 @@ class Login extends React.Component {
                       </div>
                   </div>
 
+                  <div className={"row " + (EsNavegadorCompatibleService() ? "d-none" : "")}>
+                      <div className="col text-center">
+                        <div class="alert alert-danger" role="alert">
+                          <strong>Oh snap!</strong> Esta aplicación sólo es compatible con los navegadores Google Chrome y Firefox.
+                        </div>
+
+                      </div>
+                  </div>
+
           
                   <div className="form-group">
-                      <div className="row">
+                      <div className={"row "}>
                           <div className="col col-sm-12 col-md-8 offset-md-2  justify-content-center d-flex pt-2 mt-2" >
-                              <button type="submit" className="btn btn-primary" onClick={this.SignIn}>Iniciar Sesión</button>
+                              <button 
+                              disabled={!EsNavegadorCompatibleService()}
+                              type="submit" className="btn btn-primary" onClick={this.SignIn}>Iniciar Sesión</button>
                           </div>
                       </div>
                   </div>

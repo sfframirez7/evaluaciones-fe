@@ -8,6 +8,7 @@ import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado'
 import {EvaluacionCompletadaService, EliminarEvaluacionPorMetaService} from '../../../services/EvaluacionesService'
 import Swal from "sweetalert2";
 
+
 class EvaluacionPorMetas extends Component {
 
     constructor(props) {
@@ -256,6 +257,7 @@ class EvaluacionPorMetas extends Component {
 
                 <div className={"row " + (this.state.evaluacion.PreguntasMeta.length>0 ? "d-none" : "" ) }>
                     <div className="col-12 col-md-10 offset-md-1 text-center">
+                    <div className={" " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
                      
                         <div className="alert alert-primary alert-dismissible fade show" role="alert">
                             <button type="button" className="close" data-dismiss="alert" aria-label="Close">
@@ -264,15 +266,17 @@ class EvaluacionPorMetas extends Component {
                             <strong>¡Crear evaluación!</strong> No tienes creada tu evaluación por metas. Presion el botón <i>Crear evaluación</i> para que puedas evaluar a tu equipo
                         </div>
 
+                        <button className="btn btn-primary collapsed m-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                            <span className="m-1">
+                                Crear Evaluación Por Metas
+                            </span>
+                        </button>
 
-                    <button className="btn btn-primary collapsed m-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        <i className="fa fa-plus-circle" aria-hidden="true"></i>
-                        <span className="m-1">
-                            Crear Evaluación Por Metas
-                        </span>
-                    </button>
+                    </div>
+
                     <div className="collapse" id="collapseExample" >
-                        <div className="">
+                        <div >
                             <NuevEvaluacionArea EvaluacionPadre={this.state.EvaluacionPadre}></NuevEvaluacionArea>
                         </div>
                     </div>
@@ -293,7 +297,7 @@ class EvaluacionPorMetas extends Component {
                                 <hr/>
 
                                 {/* <form onSubmit={this.GuardarEvaluacionCompletada} > */}
-                                <fieldset disabled={ (this.state.evaluacion.Completo) ?  "disabled" : ""}>
+                                <fieldset disabled={ (this.state.evaluacion.Completo || EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)) ?  "disabled" : ""}>
                                 {this.state.evaluacion.PreguntasMeta.map((pregunta, index)=>{
                                         return (
                                             <div key={index} className="">
@@ -373,6 +377,7 @@ class EvaluacionPorMetas extends Component {
                                             </div>
 
                                             <div className="col text-center">
+                                                <div className={" " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
                                                 <button
                                                     type="submit"
                                                     disabled={ (this.state.evaluacion.Completo || this.state.cargando)}
@@ -381,6 +386,7 @@ class EvaluacionPorMetas extends Component {
                                                     onClick={ () => this.GuardarEvaluacionCompletada()}>
                                                         Guardar
                                                     </button>
+                                                    </div>
                                             </div>
                                             </fieldset>
                                         {/* </form> */}
@@ -388,7 +394,7 @@ class EvaluacionPorMetas extends Component {
 
                             </div>
 
-                            <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
+                            {/* <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
                                 <div className="col text-center">
                                     <button 
                                         type="button" 
@@ -398,7 +404,7 @@ class EvaluacionPorMetas extends Component {
                                         
                                         Eliminar Evaluación Por Meta</button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
 
