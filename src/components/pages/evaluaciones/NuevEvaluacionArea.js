@@ -6,6 +6,7 @@ import {ObtenerEquipoPorEvaluacion} from '../../../services/ColaboradoresService
 
 import Swal from "sweetalert2";
 import Loading from '../../common/Loading';
+import { RegistrarEventoDelSistema } from '../../../services/Utilidades';
 
 class NuevEvaluacionArea extends Component {
 
@@ -330,6 +331,7 @@ class NuevEvaluacionArea extends Component {
                 text: "Éxito",
             });
             this.setState({cargando : false})
+            RegistrarEventoDelSistema("Creó evaluación por meta. Colaboradores :"+JSON.stringify( this.state.colaboradersSelected) + "Preguntas-> Total:" +metricas.length + ", preguntas:" + JSON.stringify(metricas))
             window.history.back();
 
         }).catch((error) => {
@@ -356,7 +358,7 @@ class NuevEvaluacionArea extends Component {
                                 className="form-control" 
                                 type="text" 
                                 placeholder="Título..."
-                                maxlength="150"
+                                maxLength="150"
                                 value={this.state.Titulo}
                                 onChange={this.TxtTituloHandler}/>
                         </div>
@@ -371,7 +373,7 @@ class NuevEvaluacionArea extends Component {
                                 className="form-control" 
                                 name="txtDescripcion" 
                                 id="txtDescripcion"  
-                                maxlength="250"
+                                maxLength="250"
                                 rows={3} 
                                 placeholder="Descripción..." 
                                 value={this.state.Descripcion}

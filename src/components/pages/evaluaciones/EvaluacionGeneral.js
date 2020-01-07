@@ -8,6 +8,7 @@ import {TipoPregunta} from '../../../Models/TipoPreguntasModel';
 import Swal from "sweetalert2";
 import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado'
 import {AceptarEvaluacionService} from '../../../services/EvaluacionesService'
+import { RegistrarEventoDelSistema } from '../../../services/Utilidades';
 
 class EvaluacionGeneral extends Component {
 
@@ -193,6 +194,7 @@ class EvaluacionGeneral extends Component {
                 icon: 'success',
                 text: "Éxito",
             });
+            RegistrarEventoDelSistema("Completó la evaluación:"+EvaluacionId)
             window.history.back();
 
         }).catch((error) => {
@@ -232,6 +234,7 @@ class EvaluacionGeneral extends Component {
                         icon: 'success',
                         text: "Éxito",
                     });
+                    RegistrarEventoDelSistema("Aceptó la evaluación:"+this.state.EvaluacionId)
                     window.history.back();
                     
                 }).catch((err) => {

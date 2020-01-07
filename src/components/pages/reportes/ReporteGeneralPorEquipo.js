@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Moment from 'react-moment';
-
-import {Link} from 'react-router-dom'
-import Stepper from 'bs-stepper'
 
 import Loading from '../../common/Loading';
 import {IsNumber} from '../../../services/IsNumber'
 
-import {ObtenerReporteGeneralService, ObtenerReporteGeneralPorEquipoService} from '../../../services/ColaboradoresService'
+import { ObtenerReporteGeneralPorEquipoService} from '../../../services/ColaboradoresService'
 import {ObtenerTodasEvaluacionesAnualesService} from '../../../services/EvaluacionesService'
-import {ObtenerSubAreas} from '../../../services/SubAreasService'
 import BtnExportToExcel from '../../common/BtnExportToExcel';
 import NoData from '../../common/NoData';
 import TituloPrincipal from '../../common/TituloPrincipal';

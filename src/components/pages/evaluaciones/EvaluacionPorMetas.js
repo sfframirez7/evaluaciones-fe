@@ -6,6 +6,7 @@ import Loading from '../../common/Loading'
 import EsElUsuarioLogueado from '../../../services/EsElUsuarioLogueado'
 
 import {EvaluacionCompletadaService, EliminarEvaluacionPorMetaService} from '../../../services/EvaluacionesService'
+import { RegistrarEventoDelSistema } from '../../../services/Utilidades';
 import Swal from "sweetalert2";
 
 
@@ -199,6 +200,7 @@ class EvaluacionPorMetas extends Component {
                 icon: 'success',
                 text: "Éxito",
             });
+            RegistrarEventoDelSistema("Completó la evaluación por meta:"+EvaluacionId + "; al colaborador: "+IdColaborador+"; Evaluación padre:"+IdEvaluacionAnual)
             window.history.back();
             
         }).catch((error) => {
@@ -232,6 +234,7 @@ class EvaluacionPorMetas extends Component {
                         icon: 'success',
                         text: "Éxito",
                     });
+                    RegistrarEventoDelSistema("Eliminó la evaluación por meta:"+this.state.IdEvaluacionAnual+ " del colaborador : "+this.state.colaboradorId)
                     window.history.back();
                     
                 }).catch((err) => {
@@ -394,7 +397,7 @@ class EvaluacionPorMetas extends Component {
 
                             </div>
 
-                            {/* <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
+                            <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
                                 <div className="col text-center">
                                     <button 
                                         type="button" 
@@ -404,7 +407,7 @@ class EvaluacionPorMetas extends Component {
                                         
                                         Eliminar Evaluación Por Meta</button>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
 
 

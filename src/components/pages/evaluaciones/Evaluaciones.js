@@ -34,7 +34,6 @@ class Evaluaciones extends Component {
         this.setState({cargando  : true})
         ObtenerEvaluacionesService()
         .then((res) => {
-            console.log(res.data)
             this.setState({evaluaciones : res.data, cargando : false})
         }).catch((err) => {
             this.setState({cargando  : true})

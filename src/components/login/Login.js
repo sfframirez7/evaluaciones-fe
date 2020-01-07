@@ -11,6 +11,7 @@ import {connect} from 'react-redux';
 import Swal from "sweetalert2";  
 import { ObtenerOpcionesDeMenu } from '../../services/MenuService';
 import EsNavegadorCompatibleService from '../../services/EsNavegadorCompatibleService';
+import { RegistrarEventoDelSistema } from '../../services/Utilidades';
 
 class Login extends React.Component {
 
@@ -95,6 +96,7 @@ class Login extends React.Component {
                   nombreColaborador : user.EmpleadoNombre,
                   colaboradorId : user.Empleado
               }
+              RegistrarEventoDelSistema("Inicio de sesión; navegador: "+window.navigator.userAgent)
               this.props.dispatch({type:'ACTUALIZAR_COLABORADOR', data: colaborador}) 
               this.setState( ({Cargando: false }));
               window.location.reload();
