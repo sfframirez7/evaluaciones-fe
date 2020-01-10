@@ -17,7 +17,6 @@ class EvaluacionPorMetas extends Component {
 
         this.state = {
             evaluacion : this.props.Evaluacion,
-            // EvaluacionPadre : this.props.EvaluacionPadre,
             EvaluacionId: this.props.Evaluacion.IdEvaluacion,
             EvaluacionPadre: this.props.IdPadre,
             IdEvaluacionAnual: this.props.Evaluacion.IdEvaluacionAnual,
@@ -217,7 +216,7 @@ class EvaluacionPorMetas extends Component {
     EliminarEvaluacionPorMeta()
     {
         Swal.fire({
-            title: 'Al eliminar esta meta, se borrarán los resultados de todos los colaboradores que se encuentren en ella. ESTA ACCIÓN NO SE PUEDE REVERTIR!',
+            title: 'Al eliminar esta meta, se borrarán los resultados de todos los colaboradores que se encuentren en ella. ¡ESTA ACCIÓN NO SE PUEDE REVERTIR!',
             text: "¿Eliminar evaluación?",
             icon: 'warning',
             showCancelButton: true,
@@ -380,10 +379,10 @@ class EvaluacionPorMetas extends Component {
                                             </div>
 
                                             <div className="col text-center">
-                                                <div className={" " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
+                                                <div className={" " +((EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId) || this.state.evaluacion.Completo || this.state.evaluacion.PermiteGuardar === false)   ? "d-none" : "")} >
                                                 <button
                                                     type="submit"
-                                                    disabled={ (this.state.evaluacion.Completo || this.state.cargando)}
+                                                    disabled={ (this.state.evaluacion.Completo || this.state.cargando ) ? true : false}
                                                     // type="button"
                                                     className="btn btn-success text-center"
                                                     onClick={ () => this.GuardarEvaluacionCompletada()}>
@@ -397,7 +396,7 @@ class EvaluacionPorMetas extends Component {
 
                             </div>
 
-                            <div className={"row " +(EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId)  ? "d-none" : "")} >
+                            <div className={"row " +((EsElUsuarioLogueado(this.props.colaboradorSelected.colaboradorId) || this.state.evaluacion.PermiteGuardar === false)  ? "d-none" : "")} >
                                 <div className="col text-center">
                                     <button 
                                         type="button" 

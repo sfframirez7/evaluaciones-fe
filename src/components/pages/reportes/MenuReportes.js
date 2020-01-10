@@ -30,7 +30,8 @@ class MenuReportes extends Component {
             {Nombre: "Resumen general", Descripcion: "Descripción...", Ruta: "/reportes/resumenGeneral", Icono :"fa-id-card-o"},
             {Nombre: "Reporte histórico de notas", Descripcion: "Descripción...", Ruta: "/reportes/reporteHistoricoNotas", Icono :"fa-id-card-o"},
             {Nombre: "Colaboradores pendientes de evaluación", Descripcion: "Descripción...", Ruta: "/reportes/pendientesDeEvaluacion", Icono :"fa-id-card-o"},
-            {Nombre: "Resultado evaluación por competencias conductuales", Descripcion: "Descripción...", Ruta: "/reportes/compentenciasConductuales", Icono :"fa-id-card-o"}
+            {Nombre: "Resultado evaluación por competencias conductuales", Descripcion: "Descripción...", Ruta: "/reportes/compentenciasConductuales", Icono :"fa-id-card-o"},
+            {Nombre: "Reseteo de notas", Descripcion: "Descripción...", Ruta: "/reportes/reseteoNota", Icono :"fa-id-card-o"}
         ]
 
         this.setState({Reportes : reportes})

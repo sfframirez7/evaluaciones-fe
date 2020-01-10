@@ -36,6 +36,7 @@ class MenuMantenimientos extends Component {
             // {Nombre: "Nuev", Descripcion: "Descripción...", Ruta: "/settings/nuevoColaborador", Icono :"fa-id-card-o"},
             {Nombre: "Cargos grados", Descripcion: "Descripción...", Ruta: "/settings/cargoGrado", Icono :"fa-id-card-o"},
             {Nombre: "Reasignaciones", Descripcion: "Descripción...", Ruta: "/settings/reasignaciones", Icono :"fa-id-card-o"},
+            {Nombre: "Resetear nota", Descripcion: "Descripción...", Ruta: "/settings/resetearNota", Icono :"fa-id-card-o"},
         ]
 
         this.setState({Reportes : reportes})

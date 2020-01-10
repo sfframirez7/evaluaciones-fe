@@ -209,7 +209,7 @@ class Login extends React.Component {
 
                   <div className={"row " + (EsNavegadorCompatibleService() ? "d-none" : "")}>
                       <div className="col text-center">
-                        <div class="alert alert-danger" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           <strong>Oh snap!</strong> Esta aplicación sólo es compatible con los navegadores Google Chrome y Firefox.
                         </div>
 

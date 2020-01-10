@@ -15,6 +15,7 @@ import NuevoCargo from '../cargos/NuevoCargo';
 import MantenimientoEvaluaciones from './MantenimientoEvaluaciones';
 import MantenimientoUsuarios from './MantenimientoUsuarios';
 import NuevoUsuario from './NuevoUsuario';
+import MantenimientoNotas from './MantenimientoNotas';
 
 
 
@@ -45,6 +46,7 @@ class Mantenimientos extends Component {
                     <Route path={`${this.props.match.path}/perfilColaboradores`} component={PerfilColaboradores} />
                     <Route path={`${this.props.match.path}/cargoGrado`} component={CargoGrado} />
                     <Route path={`${this.props.match.path}/reasignaciones`} component={Reasignaciones} />
+                    <Route path={`${this.props.match.path}/resetearNota`} component={MantenimientoNotas} />
                     
                 </div>
             </div>

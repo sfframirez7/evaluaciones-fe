@@ -194,7 +194,7 @@ class EvaluacionGeneral extends Component {
                 icon: 'success',
                 text: "Éxito",
             });
-            RegistrarEventoDelSistema("Completó la evaluación:"+EvaluacionId)
+            RegistrarEventoDelSistema("Completó la evaluación:"+EvaluacionId+ "; Respuesta ->"+ JSON.stringify(respuestaSeleccionUnica))
             window.history.back();
 
         }).catch((error) => {
@@ -395,10 +395,10 @@ class EvaluacionGeneral extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col text-center">
+                                            <div className={"col text-center " + (this.state.evaluacion.Completo ? "d-none" : "")}>
                                                 {this.state.evaluacion.PermiteGuardar ? (
                                                     <button
-                                                        type="submit"
+                                                        type="button"
                                                         disabled={ (this.state.evaluacion.Completo || this.state.cargando )}
                                                         className="btn btn-success text-center"
                                                         onClick={ () => this.handleSubmit()}>

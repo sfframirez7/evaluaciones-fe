@@ -9,6 +9,7 @@ import RptResumenGeneral from './RptResumenGeneral';
 import ReporteHistoricoDeNotas from './ReporteHistoricoDeNotas';
 import ReporteCompetenciasConductuales from './ReporteCompetenciasConductuales';
 import ReporteGeneral from './ReporteGeneral';
+import ReporteReseteoDeNota from './ReporteReseteoDeNota';
 
 class Reportes extends Component {
 
@@ -31,6 +32,7 @@ class Reportes extends Component {
                     <Route path={`${this.props.match.path}/pendientesDeEvaluacion`} component={PendientesDeEvaluacion} />
                     <Route path={`${this.props.match.path}/resumenGeneral`} component={RptResumenGeneral} />
                     <Route path={`${this.props.match.path}/reporteHistoricoNotas`} component={ReporteHistoricoDeNotas} />
+                    <Route path={`${this.props.match.path}/reseteoNota`} component={ReporteReseteoDeNota} />
 
             </div>
         </div>

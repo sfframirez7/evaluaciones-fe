@@ -59,3 +59,38 @@ export const EliminarEvaluacionPorMetaService = (IdEvaluacionPorMeta) => {
 
     return axios.get('/EliminarEvaluacionPorMeta/'+IdEvaluacionPorMeta )
 }
+
+export const ResetearNoteEvaluacionPorMetaService = (colaboradorId, evaluacionId) => {
+
+    var data = {
+        ColaboradorId : parseInt(colaboradorId),
+	    EliminadaPor  : 0,
+	    EvluacionId   : parseInt(evaluacionId),
+	    TipoNota      : 0
+    }
+
+    return axios.post('/ResetearNotaEvaluacionPorMeta', data )
+}
+
+export const ResetearNotaEvaluacionGeneralService = (colaboradorId, evaluacionId) => {
+
+    var data = {
+        ColaboradorId : parseInt(colaboradorId),
+	    EliminadaPor  : 0,
+	    EvluacionId   : parseInt(evaluacionId),
+	    TipoNota      : 0
+    }
+
+    return axios.post('/ResetearNotaEvaluacionGeneral', data )
+}
+
+export const ResetearNoteEvaluacionGeneralService = (colaboradorId, evaluacionId) => {
+
+    var data = {
+        ColaboradorId : colaboradorId,
+        EvluacionId :evaluacionId
+    }
+
+    return axios.post('/ResetearNotaEvaluacionGeneral', data )
+    
+}

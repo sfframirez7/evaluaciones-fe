@@ -20,15 +20,12 @@ class Evaluacion extends Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
           name: 'React',
           evaluaciones : [],
           evaluaciones2 : [],
           evaluacionPorMeta: null,
-        //   colaboradorId : colaboradorId,
-        // evaluacionId : evaluacionId,
-        evaluacionId : 0,
+          evaluacionId : 0,
           colaboradorId : 0,
           HabilitarEvaluacionGeneral : false,
           EsEldueno : false
@@ -98,9 +95,7 @@ class Evaluacion extends Component {
 
         axios.get('/GetEvaluacionMetaPorColaborador/'+this.props.colaboradorSelected.colaboradorId+'/'+evaluacionId)
             .then(res => {
-                // console.log(res.data)
                 this.setState({evaluacionPorMeta : res.data, cargando : false})
-
                 if(!res.data) 
                     return
                 
