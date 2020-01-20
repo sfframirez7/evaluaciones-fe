@@ -24,6 +24,7 @@ import MisEvaluaciones from '../pages/evaluaciones/MisEvaluaciones';
 import ResumenEvaluaciones from '../pages/evaluaciones/ResumenEvaluaciones';
 import UsuarioPage from '../pages/usuario/UsuarioPage';
 import ReporteGeneralPorEquipo from '../pages/reportes/ReporteGeneralPorEquipo';
+import SideMenu from '../pages/menu/SideMenu';
 class AppRouter extends React.Component {
 
     constructor(props)
@@ -37,6 +38,7 @@ class AppRouter extends React.Component {
             PerfilId: user.PerfilCod,
             opcioneDeMenu : []
         }
+        this.OpenMenu = this.OpenMenu.bind(this)
     }
 
    componentDidMount()
@@ -48,12 +50,80 @@ class AppRouter extends React.Component {
         this.setState({opcioneDeMenu})
    }
 
+   OpenMenu()
+   {
+       document.getElementById("mySidenav").style.width = "315px";
+   }
+
     render() {
         return (
             <Router>
 
                 <div>
+                   {/*
+                    <nav className="navbar navbar-expand navbar-light bg-banpais p-1">
+                        <button className="btn" onClick={()=> this.OpenMenu()}>
+                            <i className="fa fa-bars fa-lg" aria-hidden="true"></i>
+                        </button>
+                        <span className="navbar-brand font-weight-bold" >Evaluaciones</span>
+                        
+                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button> 
+
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav mr-auto">
+
+                                <li className="nav-item active">
+                                    <Link className="nav-link font-weight-bold" to="/">
+                                    <i className="fa fa-list iconoMenu pt-1" aria-hidden="true"></i>
+                                        <span className="menuItem">
+                                        Mis Evaluaciones
+                                        </span> 
+                                    </Link>
+                                </li>
+                               
+                                <li className="nav-item active">
+                                    <Link className="nav-link font-weight-bold" to="/evaluacionesEquipo">
+                                    <i className="fa fa-file-text iconoMenu pt-1" aria-hidden="true"></i>
+                                        <span className="menuItem">
+                                            Evaluaciones equipo
+                                        </span> 
+                                    </Link>
+                                </li>
+                               
+
+                                {this.state.opcioneDeMenu.map((opcion, index)=> {
+                                    return (
+                                        <li key={index} className={"nav-item active " }>
+                                            <Link className="nav-link font-weight-bold" to={opcion.Ruta}>
+                                            <i 
+                                                className={"fa  iconoMenu pt-1 " +(opcion.Icono)} 
+                                                aria-hidden="true"></i>
+                                                <span className="menuItem">
+                                                    {opcion.Menu}
+                                                </span> 
+                                            </Link>
+                                        </li>
+                                    )
+                                })}
+
+                                
+                            </ul>
+                            <form className="form-inline my-2 my-lg-0">
+
+                                <button type="button" className="btn btn-link iconoMenu " data-toggle="modal" data-target="#exampleModal3">
+                                    <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+                                </button>
+
+                            </form>
+                        </div> 
+                    </nav>
+                    */}
                     <nav className="navbar navbar-expand-lg navbar-light bg-banpais">
+                        {/* <button className="btn" onClick={()=> this.OpenMenu()}>
+                            <i className="fa fa-bars fa-lg" aria-hidden="true"></i>
+                        </button> */}
                         <span className="navbar-brand font-weight-bold" >Evaluaciones</span>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -98,13 +168,13 @@ class AppRouter extends React.Component {
 
                                 
                             </ul>
-                        <form className="form-inline my-2 my-lg-0">
+                            <form className="form-inline my-2 my-lg-0">
 
-                            <button type="button" className="btn btn-link iconoMenu " data-toggle="modal" data-target="#exampleModal3">
-                                <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
-                            </button>
+                                <button type="button" className="btn btn-link iconoMenu " data-toggle="modal" data-target="#exampleModal3">
+                                    <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+                                </button>
 
-                        </form>
+                            </form>
                         </div>
                     </nav>
 
@@ -137,6 +207,9 @@ class AppRouter extends React.Component {
 
                 </div>
 
+                <div>
+                    <SideMenu></SideMenu>
+                </div>
 
                 <Route path="/evaluacionesEquipo" exact component={Evaluaciones} />
                 <Route path="/" exact component={MisEvaluaciones} />

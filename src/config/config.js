@@ -8,7 +8,7 @@ export const store = createStore(Reducer);
 
 /* Producción */
 //const UrlBase = "https://10.100.90.9:8088"
-const UrlBase = "https://servicioevaluaciones.banpais.hn:8088"
+//const UrlBase = "https://servicioevaluaciones.banpais.hn:8088"
 
 /* PRUEBAS */
 //const UrlBase = "https://10.100.203.46:8088"
@@ -16,7 +16,7 @@ const UrlBase = "https://servicioevaluaciones.banpais.hn:8088"
 
 
 /* Desarrollo */
-//const UrlBase = "http://10.1.133.2:8088"
+const UrlBase = "http://10.1.133.2:8088"
 //const UrlBase = "http://localhost:8088"
 
 
